@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SCAppcastModel.h"
 
 @interface SCXMLParserDelegate : NSObject <NSXMLParserDelegate>
+
+@property (strong) NSString *currentElement; 
+@property (strong) NSDictionary *currentAttributes;
+@property (assign) BOOL isItemElement;
+@property (strong) SCAppcastModel *appcastData;
 
 @end

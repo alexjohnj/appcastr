@@ -7,7 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "SCAppcastModel.h"
+#import "SCXMLParserDelegate.h"
 
 @interface SCDocument : NSDocument
+
+@property (strong) SCAppcastModel *appcastData;
 
 @end
