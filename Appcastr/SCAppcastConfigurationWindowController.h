@@ -12,6 +12,7 @@
 @interface SCAppcastConfigurationWindowController : NSWindowController
 
 @property (strong) SCAppcastModel *appcastData;
+@property (weak) IBOutlet NSTextField *appcastNameField;
 
 - (IBAction)closeSheet:(id)sender;
 

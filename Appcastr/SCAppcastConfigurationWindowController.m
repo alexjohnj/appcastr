@@ -11,6 +11,7 @@
 @implementation SCAppcastConfigurationWindowController
 
 @synthesize appcastData;
+@synthesize appcastNameField;
 
 - (id)initWithWindowNibName:(NSString *)nibName appcastData:(SCAppcastModel *)appcast
 {
@@ -29,7 +30,7 @@
 {
     [super windowDidLoad];
     
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    [self.window makeFirstResponder:self.appcastNameField];
 }
 
 - (IBAction)closeSheet:(id)sender{
