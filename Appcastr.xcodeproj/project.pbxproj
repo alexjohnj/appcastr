@@ -1,0 +1,308 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA9B4BF01580DAC800599590 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9B4BEF1580DAC800599590 /* Cocoa.framework */; };
+		FA9B4BFA1580DAC800599590 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA9B4BF81580DAC800599590 /* InfoPlist.strings */; };
+		FA9B4BFC1580DAC800599590 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4BFB1580DAC800599590 /* main.m */; };
+		FA9B4C001580DAC800599590 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FA9B4BFE1580DAC800599590 /* Credits.rtf */; };
+		FA9B4C031580DAC800599590 /* SCDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4C021580DAC800599590 /* SCDocument.m */; };
+		FA9B4C061580DAC800599590 /* SCDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9B4C041580DAC800599590 /* SCDocument.xib */; };
+		FA9B4C091580DAC800599590 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9B4C071580DAC800599590 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FA9B4BEB1580DAC800599590 /* Appcastr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appcastr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA9B4BEF1580DAC800599590 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		FA9B4BF21580DAC800599590 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		FA9B4BF31580DAC800599590 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FA9B4BF41580DAC800599590 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FA9B4BF71580DAC800599590 /* Appcastr-Info.plist */ = {isa = PBXFileReference; path = "Appcastr-Info.plist"; sourceTree = "<group>"; };
+		FA9B4BF91580DAC800599590 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FA9B4BFB1580DAC800599590 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FA9B4BFD1580DAC800599590 /* Appcastr-Prefix.pch */ = {isa = PBXFileReference; path = "Appcastr-Prefix.pch"; sourceTree = "<group>"; };
+		FA9B4BFF1580DAC800599590 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		FA9B4C011580DAC800599590 /* SCDocument.h */ = {isa = PBXFileReference; path = SCDocument.h; sourceTree = "<group>"; };
+		FA9B4C021580DAC800599590 /* SCDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCDocument.m; sourceTree = "<group>"; };
+		FA9B4C051580DAC800599590 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SCDocument.xib; sourceTree = "<group>"; };
+		FA9B4C081580DAC800599590 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA9B4BE81580DAC800599590 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA9B4BF01580DAC800599590 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA9B4BE01580DAC700599590 = {
+			isa = PBXGroup;
+			children = (
+				FA9B4BF51580DAC800599590 /* Appcastr */,
+				FA9B4BEE1580DAC800599590 /* Frameworks */,
+				FA9B4BEC1580DAC800599590 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA9B4BEC1580DAC800599590 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA9B4BEB1580DAC800599590 /* Appcastr.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA9B4BEE1580DAC800599590 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA9B4BEF1580DAC800599590 /* Cocoa.framework */,
+				FA9B4BF11580DAC800599590 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA9B4BF11580DAC800599590 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA9B4BF21580DAC800599590 /* AppKit.framework */,
+				FA9B4BF31580DAC800599590 /* CoreData.framework */,
+				FA9B4BF41580DAC800599590 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		FA9B4BF51580DAC800599590 /* Appcastr */ = {
+			isa = PBXGroup;
+			children = (
+				FA9B4C011580DAC800599590 /* SCDocument.h */,
+				FA9B4C021580DAC800599590 /* SCDocument.m */,
+				FA9B4C041580DAC800599590 /* SCDocument.xib */,
+				FA9B4C071580DAC800599590 /* MainMenu.xib */,
+				FA9B4BF61580DAC800599590 /* Supporting Files */,
+			);
+			path = Appcastr;
+			sourceTree = "<group>";
+		};
+		FA9B4BF61580DAC800599590 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA9B4BF71580DAC800599590 /* Appcastr-Info.plist */,
+				FA9B4BF81580DAC800599590 /* InfoPlist.strings */,
+				FA9B4BFB1580DAC800599590 /* main.m */,
+				FA9B4BFD1580DAC800599590 /* Appcastr-Prefix.pch */,
+				FA9B4BFE1580DAC800599590 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA9B4BEA1580DAC800599590 /* Appcastr */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA9B4C0C1580DAC800599590 /* Build configuration list for PBXNativeTarget "Appcastr" */;
+			buildPhases = (
+				FA9B4BE71580DAC800599590 /* Sources */,
+				FA9B4BE81580DAC800599590 /* Frameworks */,
+				FA9B4BE91580DAC800599590 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Appcastr;
+			productName = Appcastr;
+			productReference = FA9B4BEB1580DAC800599590 /* Appcastr.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA9B4BE21580DAC700599590 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SC;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = FA9B4BE51580DAC700599590 /* Build configuration list for PBXProject "Appcastr" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FA9B4BE01580DAC700599590;
+			productRefGroup = FA9B4BEC1580DAC800599590 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA9B4BEA1580DAC800599590 /* Appcastr */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA9B4BE91580DAC800599590 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA9B4BFA1580DAC800599590 /* InfoPlist.strings in Resources */,
+				FA9B4C001580DAC800599590 /* Credits.rtf in Resources */,
+				FA9B4C061580DAC800599590 /* SCDocument.xib in Resources */,
+				FA9B4C091580DAC800599590 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA9B4BE71580DAC800599590 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA9B4BFC1580DAC800599590 /* main.m in Sources */,
+				FA9B4C031580DAC800599590 /* SCDocument.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FA9B4BF81580DAC800599590 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA9B4BF91580DAC800599590 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FA9B4BFE1580DAC800599590 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA9B4BFF1580DAC800599590 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		FA9B4C041580DAC800599590 /* SCDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA9B4C051580DAC800599590 /* en */,
+			);
+			name = SCDocument.xib;
+			sourceTree = "<group>";
+		};
+		FA9B4C071580DAC800599590 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA9B4C081580DAC800599590 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA9B4C0A1580DAC800599590 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FA9B4C0B1580DAC800599590 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FA9B4C0D1580DAC800599590 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Appcastr/Appcastr-Prefix.pch";
+				INFOPLIST_FILE = "Appcastr/Appcastr-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FA9B4C0E1580DAC800599590 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Appcastr/Appcastr-Prefix.pch";
+				INFOPLIST_FILE = "Appcastr/Appcastr-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA9B4BE51580DAC700599590 /* Build configuration list for PBXProject "Appcastr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA9B4C0A1580DAC800599590 /* Debug */,
+				FA9B4C0B1580DAC800599590 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA9B4C0C1580DAC800599590 /* Build configuration list for PBXNativeTarget "Appcastr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA9B4C0D1580DAC800599590 /* Debug */,
+				FA9B4C0E1580DAC800599590 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA9B4BE21580DAC700599590 /* Project object */;
+}
