@@ -8,17 +8,18 @@
 
 #import "SCAppcastConfigurationWindowController.h"
 
-@interface SCAppcastConfigurationWindowController ()
-
-@end
-
 @implementation SCAppcastConfigurationWindowController
 
-- (id)initWithWindow:(NSWindow *)window
+@synthesize appcastData;
+
+- (id)initWithWindowNibName:(NSString *)nibName appcastData:(SCAppcastModel *)appcast
 {
-    self = [super initWithWindow:window];
+    self = [super initWithWindowNibName:nibName];
     if (self) {
-        // Initialization code here.
+        if(!appcast)
+            return nil;
+        
+        appcastData = appcast;
     }
     
     return self;
@@ -29,6 +30,10 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+}
+
+- (IBAction)closeSheet:(id)sender{
+    [NSApp endSheet:self.window];
 }
 
 @end

@@ -9,7 +9,7 @@
 #import "SCDocument.h"
 
 @implementation SCDocument
-@synthesize appcastData;
+@synthesize appcastData, appcastConfigurationSheet;
 
 - (id)init
 {
@@ -66,6 +66,23 @@
         return YES;
     }
 
+}
+
+- (IBAction)showAppcastConfigurationSheet:(id)sender{
+    if(self.appcastConfigurationSheet)
+        self.appcastConfigurationSheet = nil;
+    
+    appcastConfigurationSheet = [[SCAppcastConfigurationWindowController alloc] initWithWindowNibName:@"SCAppcastConfigurationSheet" appcastData:self.appcastData];
+    
+    [NSApp beginSheet:self.appcastConfigurationSheet.window
+       modalForWindow:self.windowForSheet
+        modalDelegate:self
+       didEndSelector:@selector(sheetDidEnd:resultCode:contextInfo:)
+          contextInfo:NULL];
+}
+
+- (void)sheetDidEnd:(NSWindow *)sheet resultCode:(NSInteger)resultCode contextInfo:(void *)contextInfo {
+	[sheet orderOut:self];
 }
 
 @end

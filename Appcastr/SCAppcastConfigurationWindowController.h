@@ -7,7 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "SCAppcastModel.h"
 
 @interface SCAppcastConfigurationWindowController : NSWindowController
+
+@property (strong) SCAppcastModel *appcastData;
+
+- (IBAction)closeSheet:(id)sender;
+
+- (id)initWithWindowNibName:(NSString *)nibName appcastData:(SCAppcastModel *)appcast;
 
 @end
