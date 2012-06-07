@@ -10,6 +10,7 @@
 #import "SCAppcastModel.h"
 #import "SCXMLParserDelegate.h"
 #import "SCAppcastConfigurationWindowController.h"
+#import "SCAppcastWriter.h"
 
 @interface SCDocument : NSDocument
 

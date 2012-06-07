@@ -34,6 +34,7 @@
 }
 
 - (IBAction)closeSheet:(id)sender{
+    [self.window makeFirstResponder:nil];
     [NSApp endSheet:self.window];
 }
 
