@@ -49,6 +49,7 @@
 }
 
 - (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
+    [self stopObservingAppcastModel:self.appcastData];
     NSXMLDocument *appcastFile = [[NSXMLDocument alloc] initWithContentsOfURL:url options:NSXMLDocumentTidyXML error:nil];
     NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:[appcastFile XMLData]];
     SCXMLParserDelegate *xmlParserDelegate = [[SCXMLParserDelegate alloc] init];
