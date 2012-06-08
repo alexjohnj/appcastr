@@ -15,7 +15,8 @@
 {
     self = [super init];
     if (self) {
-        // Add your subclass-specific initialization here.
+        appcastData = [[SCAppcastModel alloc] init];
+        [self startObservingAppcastModel:self.appcastData];
     }
     return self;
 }
@@ -63,7 +64,7 @@
     }
     
     else{
-        appcastData = xmlParserDelegate.appcastData;
+        self.appcastData = xmlParserDelegate.appcastData;
         [self startObservingAppcastModel:self.appcastData];
         return YES;
     }
