@@ -19,5 +19,7 @@
 
 - (IBAction)showAppcastConfigurationSheet:(id)sender;
 - (void)sheetDidEnd:(NSWindow *)sheet resultCode:(NSInteger)resultCode contextInfo:(void *)contextInfo;
+- (void)startObservingAppcastModel:(SCAppcastModel *)model;
+- (void)stopObservingAppcastModel:(SCAppcastModel *)model;
 
 @end
