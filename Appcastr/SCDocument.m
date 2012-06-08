@@ -57,7 +57,8 @@
     BOOL parseSuccesful = [xmlParser parse];
     
     if(!parseSuccesful){
-        *outError = [xmlParser parserError];
+        if(outError != NULL)
+            *outError = [xmlParser parserError];
         return NO;
     }
     
