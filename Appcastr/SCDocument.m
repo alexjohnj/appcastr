@@ -9,7 +9,9 @@
 #import "SCDocument.h"
 
 @implementation SCDocument
-@synthesize appcastData, appcastConfigurationSheet;
+@synthesize updateTitleField, updateBuildNumberField, updateVersionNumberField, updateDownloadLinkField, updateReleaseNotesDownloadLinkField, updateSignatureField, updateSizeField, updatePublicationDatePicker, appcastNameField, appcastLinkField, appcastLanguageField, appcastDescriptionField;
+@synthesize appcastData;
+@synthesize appcastSettingsBox, appcastSettingsBoxIsHidden, appcastSettingsToggleDisclosureTriangle, appcastSettingsBoxWasHidden;
 
 - (id)init
 {
@@ -17,6 +19,7 @@
     if (self) {
         appcastData = [[SCAppcastModel alloc] init];
         [self startObservingAppcastModel:self.appcastData];
+        appcastSettingsBoxIsHidden = YES;
     }
     return self;
 }
@@ -31,8 +34,15 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController
 {
     [super windowControllerDidLoadNib:aController];
-    // Add any code here that needs to be executed once the windowController has loaded the document's window.
+    
+    if ([self isInViewingMode]) { // this block of code is used to configure the old windows being shown in the versions browser
+        [self makeAppcastSettingsVisible:YES forWindow:aController.window];
+        SCDocument *currentlyDisplayedVersion = (SCDocument *)[aController document];
+        [self makeUserInterfaceEditable:NO forDocument:currentlyDisplayedVersion];
+    }
 }
+
+#pragma mark - Data Saving/Loading
 
 + (BOOL)autosavesInPlace
 {
@@ -69,26 +79,87 @@
         [self startObservingAppcastModel:self.appcastData];
         return YES;
     }
-    
 }
 
-- (IBAction)showAppcastConfigurationSheet:(id)sender{
-    if(self.appcastConfigurationSheet)
-        self.appcastConfigurationSheet = nil;
-    
-    appcastConfigurationSheet = [[SCAppcastConfigurationWindowController alloc] initWithWindowNibName:@"SCAppcastConfigurationSheet" appcastData:self.appcastData];
-    
-    [NSApp beginSheet:self.appcastConfigurationSheet.window
-       modalForWindow:self.windowForSheet
-        modalDelegate:self
-       didEndSelector:@selector(sheetDidEnd:resultCode:contextInfo:)
-          contextInfo:NULL];
+# pragma mark - Appcast Settings Visibility Code
+
+- (IBAction)toggleAppcastSettingsVisibility:(id)sender{
+    switch ([sender state]) {
+        case NSOnState:
+            [self makeAppcastSettingsVisible:YES forWindow:[sender window]];
+            break;
+        case NSOffState:
+            [self makeAppcastSettingsVisible:NO forWindow:[sender window]];
+            break;
+    }
 }
 
-- (void)sheetDidEnd:(NSWindow *)sheet resultCode:(NSInteger)resultCode contextInfo:(void *)contextInfo {
-    if(sheet == self.appcastConfigurationSheet.window){
-        self.appcastData = self.appcastConfigurationSheet.appcastData;
-        [sheet orderOut:self];
+- (void)makeAppcastSettingsVisible:(BOOL)visible forWindow:(NSWindow *)window{
+    NSWindow *currentWindow = window;
+    NSRect currentWindowFrame = currentWindow.frame;
+    NSRect appcastConfigBoxFrame = self.appcastSettingsBox.frame;
+    
+    if(visible == YES){
+        [currentWindow setFrame:NSMakeRect(currentWindowFrame.origin.x, currentWindowFrame.origin.y, currentWindowFrame.size.width, (currentWindowFrame.size.height + appcastConfigBoxFrame.size.height + 4)) display:YES animate:YES];
+        self.appcastSettingsBoxIsHidden = NO;
+        [self.appcastSettingsToggleDisclosureTriangle setState:NSOnState];
+        [self.appcastSettingsBox setHidden:NO];
+    }
+    else{
+        [currentWindow setFrame:NSMakeRect(currentWindowFrame.origin.x, currentWindowFrame.origin.y, currentWindowFrame.size.width, (currentWindowFrame.size.height - appcastConfigBoxFrame.size.height - 4)) display:YES animate:YES];
+        self.appcastSettingsBoxIsHidden = YES;
+        [self.appcastSettingsToggleDisclosureTriangle setState:NSOffState];
+        [self.appcastSettingsBox setHidden:YES];
+    }
+}
+
+- (void)makeUserInterfaceEditable:(BOOL)editable forDocument:(SCDocument *)document{
+    [document.updateTitleField setEditable:editable];
+    [document.updateBuildNumberField setEditable:editable];
+    [document.updateVersionNumberField setEditable:editable];
+    [document.updateDownloadLinkField setEditable:editable];
+    [document.updateReleaseNotesDownloadLinkField setEditable:editable];
+    [document.updateSignatureField setEditable:editable];
+    [document.updateSizeField setEditable:editable];
+    [document.updatePublicationDatePicker setEnabled:editable]; // Haha, this doesn't make much sense with the editable argument. 
+    
+    [document.appcastNameField setEditable:editable];
+    [document.appcastLinkField setEditable:editable];
+    [document.appcastLanguageField setEditable:editable];
+    [document.appcastDescriptionField setEditable:editable];
+    
+    [document.appcastSettingsToggleDisclosureTriangle setEnabled:editable]; // again, the argument name doesn't make a lot of sense. 
+}
+
+#pragma mark - Versions Customisation
+
+- (void)windowWillEnterVersionBrowser:(NSNotification *)notification{
+    self.appcastSettingsBoxWasHidden = [self.appcastSettingsBox isHidden];
+    [self makeUserInterfaceEditable:NO forDocument:self];
+    
+    if(self.appcastSettingsBoxWasHidden == YES){
+        [self makeAppcastSettingsVisible:YES forWindow:[notification object]];
+    }
+}
+
+- (void)windowDidExitVersionBrowser:(NSNotification *)notification{
+    [self makeUserInterfaceEditable:YES forDocument:self];
+    if(self.appcastSettingsBoxWasHidden == YES){
+        [self makeAppcastSettingsVisible:NO forWindow:[notification object]];
+    }
+}
+
+#pragma mark - Window Restoration
+
+- (void)window:(NSWindow *)window willEncodeRestorableState:(NSCoder *)state{
+    NSNumber *appcastSettingsIsHidden = [NSNumber numberWithBool:self.appcastSettingsBox.isHidden];
+    [state encodeObject:appcastSettingsIsHidden forKey:@"appcastSettingsIsHidden"];
+}
+
+- (void)window:(NSWindow *)window didDecodeRestorableState:(NSCoder *)state{
+    self.appcastSettingsBoxIsHidden = [[state decodeObjectForKey:@"appcastSettingsIsHidden"] boolValue];
+    if(self.appcastSettingsBoxIsHidden == NO){
+        [self makeAppcastSettingsVisible:YES forWindow:window];
     }
 }
 
@@ -109,7 +180,6 @@
     [model addObserver:self forKeyPath:@"appCastTitle" options:NSKeyValueObservingOptionOld context:NULL];
     [model addObserver:self forKeyPath:@"appCastLink" options:NSKeyValueObservingOptionOld context:NULL];
     [model addObserver:self forKeyPath:@"appCastLanguage" options:NSKeyValueObservingOptionOld context:NULL];
-
 }
 
 - (void)stopObservingAppcastModel:(SCAppcastModel *)model{

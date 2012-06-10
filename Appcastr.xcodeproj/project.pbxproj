@@ -15,8 +15,6 @@
 		FA9B4C031580DAC800599590 /* SCDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4C021580DAC800599590 /* SCDocument.m */; };
 		FA9B4C061580DAC800599590 /* SCDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9B4C041580DAC800599590 /* SCDocument.xib */; };
 		FA9B4C091580DAC800599590 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9B4C071580DAC800599590 /* MainMenu.xib */; };
-		FA9B4C1A1580DEB200599590 /* SCAppcastConfigurationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4C181580DEB200599590 /* SCAppcastConfigurationWindowController.m */; };
-		FA9B4C1B1580DEB200599590 /* SCAppcastConfigurationSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9B4C191580DEB200599590 /* SCAppcastConfigurationSheet.xib */; };
 		FA9B4C1E1580E02200599590 /* SCAppcastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4C1D1580E02200599590 /* SCAppcastModel.m */; };
 		FA9B4C211580E0AA00599590 /* SCXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4C201580E0AA00599590 /* SCXMLParserDelegate.m */; };
 /* End PBXBuildFile section */
@@ -38,9 +36,6 @@
 		FA9B4C021580DAC800599590 /* SCDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCDocument.m; sourceTree = "<group>"; };
 		FA9B4C051580DAC800599590 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SCDocument.xib; sourceTree = "<group>"; };
 		FA9B4C081580DAC800599590 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		FA9B4C171580DEB200599590 /* SCAppcastConfigurationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAppcastConfigurationWindowController.h; sourceTree = "<group>"; };
-		FA9B4C181580DEB200599590 /* SCAppcastConfigurationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAppcastConfigurationWindowController.m; sourceTree = "<group>"; };
-		FA9B4C191580DEB200599590 /* SCAppcastConfigurationSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCAppcastConfigurationSheet.xib; sourceTree = "<group>"; };
 		FA9B4C1C1580E02200599590 /* SCAppcastModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAppcastModel.h; sourceTree = "<group>"; };
 		FA9B4C1D1580E02200599590 /* SCAppcastModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAppcastModel.m; sourceTree = "<group>"; };
 		FA9B4C1F1580E0AA00599590 /* SCXMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCXMLParserDelegate.h; sourceTree = "<group>"; };
@@ -100,13 +95,10 @@
 			children = (
 				FA31D0A21580F3F200B1F665 /* SCAppcastWriter.h */,
 				FA31D0A31580F3F200B1F665 /* SCAppcastWriter.m */,
-				FA9B4C171580DEB200599590 /* SCAppcastConfigurationWindowController.h */,
-				FA9B4C181580DEB200599590 /* SCAppcastConfigurationWindowController.m */,
 				FA9B4C1F1580E0AA00599590 /* SCXMLParserDelegate.h */,
 				FA9B4C201580E0AA00599590 /* SCXMLParserDelegate.m */,
 				FA9B4C1C1580E02200599590 /* SCAppcastModel.h */,
 				FA9B4C1D1580E02200599590 /* SCAppcastModel.m */,
-				FA9B4C191580DEB200599590 /* SCAppcastConfigurationSheet.xib */,
 				FA9B4C011580DAC800599590 /* SCDocument.h */,
 				FA9B4C021580DAC800599590 /* SCDocument.m */,
 				FA9B4C041580DAC800599590 /* SCDocument.xib */,
@@ -183,7 +175,6 @@
 				FA9B4C001580DAC800599590 /* Credits.rtf in Resources */,
 				FA9B4C061580DAC800599590 /* SCDocument.xib in Resources */,
 				FA9B4C091580DAC800599590 /* MainMenu.xib in Resources */,
-				FA9B4C1B1580DEB200599590 /* SCAppcastConfigurationSheet.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,7 +187,6 @@
 			files = (
 				FA9B4BFC1580DAC800599590 /* main.m in Sources */,
 				FA9B4C031580DAC800599590 /* SCDocument.m in Sources */,
-				FA9B4C1A1580DEB200599590 /* SCAppcastConfigurationWindowController.m in Sources */,
 				FA9B4C1E1580E02200599590 /* SCAppcastModel.m in Sources */,
 				FA9B4C211580E0AA00599590 /* SCXMLParserDelegate.m in Sources */,
 				FA31D0A41580F3F200B1F665 /* SCAppcastWriter.m in Sources */,
