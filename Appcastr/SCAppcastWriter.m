@@ -119,12 +119,19 @@
         [enclosureAttributesValues addObject:enclosureLength];
     }
     
-    if(appCast.updateMimeType){
-        NSString *enclosureTypeKey = [[NSString alloc] initWithString:@"type"];
-        NSString *enclosureType = [[NSString alloc] initWithString:appCast.updateMimeType];
-        [enclosureAttributesKeys addObject:enclosureTypeKey];
-        [enclosureAttributesValues addObject:enclosureType];
-    }
+    // Support for custom mimetypes will be implemented in a future version of Appcastr, currently we just default to "application/octet-stream"
+    
+//    if(appCast.updateMimeType){
+//        NSString *enclosureTypeKey = [[NSString alloc] initWithString:@"type"];
+//        NSString *enclosureType = [[NSString alloc] initWithString:appCast.updateMimeType];
+//        [enclosureAttributesKeys addObject:enclosureTypeKey];
+//        [enclosureAttributesValues addObject:enclosureType];
+//    }
+    
+    NSString *enclosureTypeKey = [[NSString alloc] initWithString:@"type"];
+    NSString *enclosureType = [[NSString alloc] initWithString:@"application/octet-stream"];
+    [enclosureAttributesKeys addObject:enclosureTypeKey];
+    [enclosureAttributesValues addObject:enclosureType];
     
     if(appCast.updateSignature){
         NSString *enclosureDSASignatureKey = [[NSString alloc] initWithString:@"sparkle:dsaSignature"];
