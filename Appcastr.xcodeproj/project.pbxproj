@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA0AF3C315851C0100510080 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0AF3C215851C0100510080 /* Sparkle.framework */; };
+		FA0AF3C615851C1300510080 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FA0AF3C215851C0100510080 /* Sparkle.framework */; };
+		FA0AF3C815851D9A00510080 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FA0AF3C715851D9A00510080 /* dsa_pub.pem */; };
+		FA0AF3CC158521AD00510080 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FA0AF3CB158521AD00510080 /* icon.icns */; };
 		FA31D0A41580F3F200B1F665 /* SCAppcastWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA31D0A31580F3F200B1F665 /* SCAppcastWriter.m */; };
 		FA9B4BF01580DAC800599590 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9B4BEF1580DAC800599590 /* Cocoa.framework */; };
 		FA9B4BFA1580DAC800599590 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA9B4BF81580DAC800599590 /* InfoPlist.strings */; };
@@ -19,7 +23,23 @@
 		FA9B4C211580E0AA00599590 /* SCXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4C201580E0AA00599590 /* SCXMLParserDelegate.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FA0AF3C515851C0D00510080 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FA0AF3C615851C1300510080 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		FA0AF3C215851C0100510080 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		FA0AF3C715851D9A00510080 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		FA0AF3CB158521AD00510080 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		FA31D0A21580F3F200B1F665 /* SCAppcastWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAppcastWriter.h; sourceTree = "<group>"; };
 		FA31D0A31580F3F200B1F665 /* SCAppcastWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAppcastWriter.m; sourceTree = "<group>"; };
 		FA9B4BEB1580DAC800599590 /* Appcastr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appcastr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA9B4BF01580DAC800599590 /* Cocoa.framework in Frameworks */,
+				FA0AF3C315851C0100510080 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +95,7 @@
 		FA9B4BEE1580DAC800599590 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA0AF3C215851C0100510080 /* Sparkle.framework */,
 				FA9B4BEF1580DAC800599590 /* Cocoa.framework */,
 				FA9B4BF11580DAC800599590 /* Other Frameworks */,
 			);
@@ -111,6 +133,8 @@
 		FA9B4BF61580DAC800599590 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA0AF3CB158521AD00510080 /* icon.icns */,
+				FA0AF3C715851D9A00510080 /* dsa_pub.pem */,
 				FA9B4BF71580DAC800599590 /* Appcastr-Info.plist */,
 				FA9B4BF81580DAC800599590 /* InfoPlist.strings */,
 				FA9B4BFB1580DAC800599590 /* main.m */,
@@ -130,6 +154,7 @@
 				FA9B4BE71580DAC800599590 /* Sources */,
 				FA9B4BE81580DAC800599590 /* Frameworks */,
 				FA9B4BE91580DAC800599590 /* Resources */,
+				FA0AF3C515851C0D00510080 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -175,6 +200,8 @@
 				FA9B4C001580DAC800599590 /* Credits.rtf in Resources */,
 				FA9B4C061580DAC800599590 /* SCDocument.xib in Resources */,
 				FA9B4C091580DAC800599590 /* MainMenu.xib in Resources */,
+				FA0AF3C815851D9A00510080 /* dsa_pub.pem in Resources */,
+				FA0AF3CC158521AD00510080 /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +308,10 @@
 		FA9B4C0D1580DAC800599590 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Appcastr/Appcastr-Prefix.pch";
 				INFOPLIST_FILE = "Appcastr/Appcastr-Info.plist";
@@ -292,6 +323,10 @@
 		FA9B4C0E1580DAC800599590 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Appcastr/Appcastr-Prefix.pch";
 				INFOPLIST_FILE = "Appcastr/Appcastr-Info.plist";
