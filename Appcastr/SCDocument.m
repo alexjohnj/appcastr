@@ -49,6 +49,11 @@
     return YES;
 }
 
+- (BOOL)prepareSavePanel:(NSSavePanel *)savePanel{
+    [savePanel setExtensionHidden:NO];
+    return YES;
+}
+
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
     SCAppcastWriter *appcastCreator = [[SCAppcastWriter alloc] init];
     NSXMLDocument *appcastFile = [appcastCreator prepareXMLDocumentFromAppCastData:self.appcastData];
