@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>Appcastr Appcast</title>
+        <link>http://alexjohnj.github.com/appcastr/appcast.xml</link>
+        <description>Appcast file for the appcast file creation tool appcastr.</description>
+        <language>en</language>
+        <item>
+            <title>Version 0.1</title>
+            <pubDate>Sun, 10 Jun 2012 04:11:42 +0100</pubDate>
+            <sparkle:releaseNotesLink>http://alexjohnj.github.com/appcastr/changelog.html</sparkle:releaseNotesLink>
+            <enclosure sparkle:version="14" sparkle:shortVersionString="0.1" length="" url="http://github.com/alexjohnj/appcastr/" type="application/octet-stream" sparkle:dsaSignature=""></enclosure>
+        </item>
+    </channel>
+</rss>
