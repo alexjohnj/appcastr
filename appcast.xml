@@ -7,7 +7,7 @@
         <language>en</language>
         <item>
             <title>Version 0.1</title>
-            <pubDate>Sun, 10 Jun 2012 04:11:42 +0100</pubDate>
+            <pubDate>Mon, 11 Jun 2012 11:00:00 +0100</pubDate>
             <sparkle:releaseNotesLink>http://alexjohnj.github.com/appcastr/changelog.html</sparkle:releaseNotesLink>
             <enclosure sparkle:version="14" sparkle:shortVersionString="0.1" length="" url="http://github.com/alexjohnj/appcastr/" type="application/octet-stream" sparkle:dsaSignature=""></enclosure>
         </item>
