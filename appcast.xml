@@ -9,7 +9,7 @@
             <title>Version 0.1</title>
             <pubDate>Mon, 11 Jun 2012 11:00:00 +0100</pubDate>
             <sparkle:releaseNotesLink>http://alexjohnj.github.com/appcastr/changelog.html</sparkle:releaseNotesLink>
-            <enclosure sparkle:version="18" sparkle:shortVersionString="0.1" length="" url="https://github.com/downloads/alexjohnj/appcastr/appcastr-0.1.zip" type="application/octet-stream" sparkle:dsaSignature=""></enclosure>
+            <enclosure sparkle:version="18" sparkle:shortVersionString="0.1" length="1219959" url="https://github.com/downloads/alexjohnj/appcastr/appcastr-0.1.zip" type="application/octet-stream" sparkle:dsaSignature="MCwCFDA6BvkXMmx930zQkLcYAJ0uWpHHAhQ16IfRoc9I4CFW8tH+fmPnjZTzNA=="></enclosure>
         </item>
     </channel>
 </rss>
