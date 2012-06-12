@@ -104,11 +104,13 @@
     NSRect appcastConfigBoxFrame = self.appcastSettingsBox.frame;
     
     if(visible == YES){
-        self.appcastSettingsBoxIsHidden = NO;
+        [self.appcastSettingsToggleDisclosureTriangle setState:NSOnState];
         [self.appcastSettingsBox setHidden:NO];
         [currentWindow setFrame:NSMakeRect(currentWindowFrame.origin.x, currentWindowFrame.origin.y, currentWindowFrame.size.width, (currentWindowFrame.size.height + appcastConfigBoxFrame.size.height + 4)) display:YES animate:YES]; //we add 4 here to make sure we get 20px clearence between the NSBox and the window's frame. 
+        self.appcastSettingsBoxIsHidden = NO;
         }
     else{
+        [self.appcastSettingsToggleDisclosureTriangle setState:NSOffState];
         [currentWindow setFrame:NSMakeRect(currentWindowFrame.origin.x, currentWindowFrame.origin.y, currentWindowFrame.size.width, (currentWindowFrame.size.height - appcastConfigBoxFrame.size.height - 4)) display:YES animate:YES]; //likewise subtract 4 here to get the same 20px clearence.
         self.appcastSettingsBoxIsHidden = YES;
         [self.appcastSettingsBox setHidden:YES];
