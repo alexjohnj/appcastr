@@ -140,7 +140,7 @@
 
 - (void)windowWillEnterVersionBrowser:(NSNotification *)notification{
     self.appcastSettingsBoxWasHidden = [self.appcastSettingsBox isHidden];
-    [self makeUserInterfaceEditable:NO forDocument:self];
+    [self.appcastSettingsToggleDisclosureTriangle setEnabled:NO];
     
     if(self.appcastSettingsBoxWasHidden == YES){
         [self makeAppcastSettingsVisible:YES forWindow:[notification object]];
@@ -148,7 +148,7 @@
 }
 
 - (void)windowDidExitVersionBrowser:(NSNotification *)notification{
-    [self makeUserInterfaceEditable:YES forDocument:self];
+    [self.appcastSettingsToggleDisclosureTriangle setEnabled:YES];
     if(self.appcastSettingsBoxWasHidden == YES){
         [self makeAppcastSettingsVisible:NO forWindow:[notification object]];
     }

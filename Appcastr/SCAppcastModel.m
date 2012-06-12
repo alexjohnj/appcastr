@@ -31,7 +31,6 @@
         appCastTitle = [[NSString alloc] init];
         appCastLanguage = [[NSString alloc] init];
         appCastDescription = [[NSString alloc] init];
-        
     }
     
     return self;
