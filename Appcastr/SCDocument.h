@@ -14,6 +14,7 @@
 @interface SCDocument : NSDocument <NSWindowDelegate>
 
 @property (strong) SCAppcastModel *appcastData;
+@property (weak) IBOutlet NSObjectController *appcastDataController;
 
 @property (weak) IBOutlet NSTextField *updateTitleField;
 @property (weak) IBOutlet NSTextField *updateBuildNumberField;
@@ -27,7 +28,6 @@
 @property (weak) IBOutlet NSTextField *appcastLinkField;
 @property (weak) IBOutlet NSTextField *appcastLanguageField;
 @property (weak) IBOutlet NSTextField *appcastDescriptionField;
-
 
 @property (weak) IBOutlet NSBox *appcastSettingsBox;
 @property (weak) IBOutlet NSButton *appcastSettingsToggleDisclosureTriangle;
