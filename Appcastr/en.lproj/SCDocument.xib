@@ -582,7 +582,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 											<string key="NSFrame">{{143, 28}, {428, 22}}</string>
 											<reference key="NSSuperview" ref="714930258"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView"/>
+											<reference key="NSNextKeyView" ref="992552565"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="976157840">
@@ -721,7 +721,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 							<string key="NSFrame">{{25, 20}, {13, 13}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="784281725"/>
+							<reference key="NSNextKeyView" ref="462472189"/>
 							<string key="NSReuseIdentifierKey">_NS:1577</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="10031047">
@@ -739,24 +739,28 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 								<int key="NSPeriodicInterval">25</int>
 							</object>
 						</object>
-						<object class="NSTextField" id="784281725">
+						<object class="NSButton" id="992552565">
 							<reference key="NSNextResponder" ref="568628114"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{43, 19}, {114, 17}}</string>
+							<string key="NSFrame">{{44, 12}, {114, 32}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="462472189"/>
-							<string key="NSReuseIdentifierKey">_NS:1505</string>
+							<reference key="NSNextKeyView"/>
+							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSTextFieldCell" key="NSCell" id="352982825">
-								<int key="NSCellFlags">68288064</int>
-								<int key="NSCellFlags2">272630784</int>
+							<object class="NSButtonCell" key="NSCell" id="667428454">
+								<int key="NSCellFlags">67239424</int>
+								<int key="NSCellFlags2">0</int>
 								<string key="NSContents">Appcast Settings:</string>
 								<reference key="NSSupport" ref="700337487"/>
-								<string key="NSCellIdentifier">_NS:1505</string>
-								<reference key="NSControlView" ref="784281725"/>
-								<reference key="NSBackgroundColor" ref="56563320"/>
-								<reference key="NSTextColor" ref="954861457"/>
+								<string key="NSCellIdentifier">_NS:9</string>
+								<reference key="NSControlView" ref="992552565"/>
+								<int key="NSButtonFlags">1208111359</int>
+								<int key="NSButtonFlags2">129</int>
+								<string key="NSAlternateContents"/>
+								<string key="NSKeyEquivalent"/>
+								<int key="NSPeriodicDelay">200</int>
+								<int key="NSPeriodicInterval">25</int>
 							</object>
 						</object>
 					</array>
@@ -934,6 +938,22 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<reference key="destination" ref="232748278"/>
 					</object>
 					<int key="connectionID">101489</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">toggleAppcastSettingsVisibility:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="992552565"/>
+					</object>
+					<int key="connectionID">101495</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">appcastSettingsClickableLabel</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="992552565"/>
+					</object>
+					<int key="connectionID">101496</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1233,7 +1253,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 							<reference ref="785951342"/>
 							<reference ref="719788009"/>
 							<reference ref="462472189"/>
-							<reference ref="784281725"/>
+							<reference ref="992552565"/>
 						</array>
 						<reference key="parent" ref="275939982"/>
 					</object>
@@ -1617,22 +1637,22 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<reference key="parent" ref="719788009"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">101453</int>
-						<reference key="object" ref="784281725"/>
+						<int key="objectID">101456</int>
+						<reference key="object" ref="232748278"/>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">101493</int>
+						<reference key="object" ref="992552565"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="352982825"/>
+							<reference ref="667428454"/>
 						</array>
 						<reference key="parent" ref="568628114"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">101454</int>
-						<reference key="object" ref="352982825"/>
-						<reference key="parent" ref="784281725"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">101456</int>
-						<reference key="object" ref="232748278"/>
-						<reference key="parent" ref="0"/>
+						<int key="objectID">101494</int>
+						<reference key="object" ref="667428454"/>
+						<reference key="parent" ref="992552565"/>
 					</object>
 				</array>
 			</object>
@@ -1766,9 +1786,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 				<string key="101411.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="101412.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="101413.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="101453.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="101454.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="101456.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="101493.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="101494.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBWindowTemplateEditedContentRect">{{133, 170}, {507, 413}}</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1777,7 +1797,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">101492</int>
+			<int key="maxID">101496</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1802,6 +1822,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<string key="appcastLinkField">NSTextField</string>
 						<string key="appcastNameField">NSTextField</string>
 						<string key="appcastSettingsBox">NSBox</string>
+						<string key="appcastSettingsClickableLabel">NSButton</string>
 						<string key="appcastSettingsToggleDisclosureTriangle">NSButton</string>
 						<string key="updateBuildNumberField">NSTextField</string>
 						<string key="updateDownloadLinkField">NSTextField</string>
@@ -1836,6 +1857,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<object class="IBToOneOutletInfo" key="appcastSettingsBox">
 							<string key="name">appcastSettingsBox</string>
 							<string key="candidateClassName">NSBox</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="appcastSettingsClickableLabel">
+							<string key="name">appcastSettingsClickableLabel</string>
+							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="appcastSettingsToggleDisclosureTriangle">
 							<string key="name">appcastSettingsToggleDisclosureTriangle</string>

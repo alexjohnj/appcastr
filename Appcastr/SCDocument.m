@@ -11,7 +11,7 @@
 @implementation SCDocument
 @synthesize updateTitleField, updateBuildNumberField, updateVersionNumberField, updateDownloadLinkField, updateReleaseNotesDownloadLinkField, updateSignatureField, updateSizeField, updatePublicationDatePicker, appcastNameField, appcastLinkField, appcastLanguageField, appcastDescriptionField;
 @synthesize appcastData, appcastDataController;
-@synthesize appcastSettingsBox, appcastSettingsBoxIsHidden, appcastSettingsToggleDisclosureTriangle, appcastSettingsBoxWasHidden;
+@synthesize appcastSettingsBox, appcastSettingsBoxIsHidden, appcastSettingsToggleDisclosureTriangle, appcastSettingsBoxWasHidden, appcastSettingsClickableLabel;
 
 - (id)init
 {
@@ -88,7 +88,19 @@
 # pragma mark - Appcast Settings Visibility Code
 
 - (IBAction)toggleAppcastSettingsVisibility:(id)sender{
-    switch ([sender state]) {
+    if(sender == self.appcastSettingsClickableLabel){
+        switch (self.appcastSettingsToggleDisclosureTriangle.state) {
+            case NSOnState:
+                self.appcastSettingsToggleDisclosureTriangle.state = NSOffState;
+                break;
+                
+            case NSOffState:
+                self.appcastSettingsToggleDisclosureTriangle.state = NSOnState;
+                break;
+        }
+    }
+    
+    switch (self.appcastSettingsToggleDisclosureTriangle.state) {
         case NSOnState:
             [self makeAppcastSettingsVisible:YES forWindow:[sender window]];
             break;
@@ -108,7 +120,7 @@
         [self.appcastSettingsBox setHidden:NO];
         [currentWindow setFrame:NSMakeRect(currentWindowFrame.origin.x, currentWindowFrame.origin.y, currentWindowFrame.size.width, (currentWindowFrame.size.height + appcastConfigBoxFrame.size.height + 4)) display:YES animate:YES]; //we add 4 here to make sure we get 20px clearence between the NSBox and the window's frame. 
         self.appcastSettingsBoxIsHidden = NO;
-        }
+    }
     else{
         [self.appcastSettingsToggleDisclosureTriangle setState:NSOffState];
         [currentWindow setFrame:NSMakeRect(currentWindowFrame.origin.x, currentWindowFrame.origin.y, currentWindowFrame.size.width, (currentWindowFrame.size.height - appcastConfigBoxFrame.size.height - 4)) display:YES animate:YES]; //likewise subtract 4 here to get the same 20px clearence.
@@ -133,6 +145,7 @@
     [document.appcastDescriptionField setEditable:editable];
     
     [document.appcastSettingsToggleDisclosureTriangle setEnabled:editable]; // again, the argument name doesn't make a lot of sense. 
+    [document.appcastSettingsClickableLabel setEnabled:editable];
 }
 
 #pragma mark - Versions Customisation
@@ -140,6 +153,7 @@
 - (void)windowWillEnterVersionBrowser:(NSNotification *)notification{
     self.appcastSettingsBoxWasHidden = [self.appcastSettingsBox isHidden];
     [self.appcastSettingsToggleDisclosureTriangle setEnabled:NO];
+    [self.appcastSettingsClickableLabel setEnabled:NO];
     
     if(self.appcastSettingsBoxWasHidden == YES){
         [self makeAppcastSettingsVisible:YES forWindow:[notification object]]; // the object is the window which entered the versions browser
@@ -148,6 +162,7 @@
 
 - (void)windowDidExitVersionBrowser:(NSNotification *)notification{
     [self.appcastSettingsToggleDisclosureTriangle setEnabled:YES];
+    [self.appcastSettingsClickableLabel setEnabled:YES];
     if(self.appcastSettingsBoxWasHidden == YES){
         [self makeAppcastSettingsVisible:NO forWindow:[notification object]];
     }

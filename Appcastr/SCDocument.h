@@ -31,6 +31,7 @@
 
 @property (weak) IBOutlet NSBox *appcastSettingsBox;
 @property (weak) IBOutlet NSButton *appcastSettingsToggleDisclosureTriangle;
+@property (weak) IBOutlet NSButton *appcastSettingsClickableLabel;
 @property (assign) BOOL appcastSettingsBoxIsHidden;
 @property (assign) BOOL appcastSettingsBoxWasHidden;
 
