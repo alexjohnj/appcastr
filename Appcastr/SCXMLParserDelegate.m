@@ -69,7 +69,7 @@
     if([self.currentElement isEqualToString:@"title"] && self.isItemElement) 
         self.appcastData.updateTitle = [[NSString alloc] initWithString:string];
     
-    if([self.currentElement isEqualToString:@"pubDate"])
+    if([self.currentElement isEqualToString:@"pubDate"] && self.isItemElement)
         self.appcastData.updatePublicationDate = [NSDate dateWithNaturalLanguageString:string];
 }
 
