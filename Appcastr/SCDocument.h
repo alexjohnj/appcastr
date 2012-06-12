@@ -37,7 +37,7 @@
 
 - (IBAction)toggleAppcastSettingsVisibility:(id)sender;
 - (void)makeAppcastSettingsVisible:(BOOL)visible forWindow:(NSWindow *)window;
-- (void)makeUserInterfaceEditable:(BOOL)editable forDocument:(SCDocument *)document;
+- (void)makeUserInterfaceInteractive:(BOOL)editable forDocument:(SCDocument *)document;
 
 - (void)startObservingAppcastModel:(SCAppcastModel *)model;
 - (void)stopObservingAppcastModel:(SCAppcastModel *)model;

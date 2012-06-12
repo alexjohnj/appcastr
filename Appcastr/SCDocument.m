@@ -37,7 +37,7 @@
     
     if ([self isInViewingMode]) { // this body of code is used to configure the old windows being shown in the versions browser
         [self makeAppcastSettingsVisible:YES forWindow:aController.window]; // expands the appcast settings so that they are viewable in the versions browser 
-        [self makeUserInterfaceEditable:NO forDocument:(SCDocument *)[aController document]]; // it just makes sure that you can't edit their contents
+        [self makeUserInterfaceInteractive:NO forDocument:(SCDocument *)[aController document]]; // it just makes sure that you can't edit their contents
     }
 }
 
@@ -129,20 +129,22 @@
     }
 }
 
-- (void)makeUserInterfaceEditable:(BOOL)editable forDocument:(SCDocument *)document{
-    [document.updateTitleField setEditable:editable];
-    [document.updateBuildNumberField setEditable:editable];
-    [document.updateVersionNumberField setEditable:editable];
-    [document.updateDownloadLinkField setEditable:editable];
-    [document.updateReleaseNotesDownloadLinkField setEditable:editable];
-    [document.updateSignatureField setEditable:editable];
-    [document.updateSizeField setEditable:editable];
-    [document.updatePublicationDatePicker setEnabled:editable]; // Haha, this doesn't make much sense with the editable argument. 
-    
-    [document.appcastNameField setEditable:editable];
-    [document.appcastLinkField setEditable:editable];
-    [document.appcastLanguageField setEditable:editable];
-    [document.appcastDescriptionField setEditable:editable];
+- (void)makeUserInterfaceInteractive:(BOOL)editable forDocument:(SCDocument *)document{
+    if(document.isInViewingMode){
+        [document.updateTitleField setEditable:editable];
+        [document.updateBuildNumberField setEditable:editable];
+        [document.updateVersionNumberField setEditable:editable];
+        [document.updateDownloadLinkField setEditable:editable];
+        [document.updateReleaseNotesDownloadLinkField setEditable:editable];
+        [document.updateSignatureField setEditable:editable];
+        [document.updateSizeField setEditable:editable];
+        [document.updatePublicationDatePicker setEnabled:editable]; // Haha, this doesn't make much sense with the editable argument. 
+        
+        [document.appcastNameField setEditable:editable];
+        [document.appcastLinkField setEditable:editable];
+        [document.appcastLanguageField setEditable:editable];
+        [document.appcastDescriptionField setEditable:editable];
+    }
     
     [document.appcastSettingsToggleDisclosureTriangle setEnabled:editable]; // again, the argument name doesn't make a lot of sense. 
     [document.appcastSettingsClickableLabel setEnabled:editable];
@@ -152,17 +154,14 @@
 
 - (void)windowWillEnterVersionBrowser:(NSNotification *)notification{
     self.appcastSettingsBoxWasHidden = [self.appcastSettingsBox isHidden];
-    [self.appcastSettingsToggleDisclosureTriangle setEnabled:NO];
-    [self.appcastSettingsClickableLabel setEnabled:NO];
-    
+    [self makeUserInterfaceInteractive:NO forDocument:self];
     if(self.appcastSettingsBoxWasHidden == YES){
         [self makeAppcastSettingsVisible:YES forWindow:[notification object]]; // the object is the window which entered the versions browser
     }
 }
 
 - (void)windowDidExitVersionBrowser:(NSNotification *)notification{
-    [self.appcastSettingsToggleDisclosureTriangle setEnabled:YES];
-    [self.appcastSettingsClickableLabel setEnabled:YES];
+    [self makeUserInterfaceInteractive:YES forDocument:self];
     if(self.appcastSettingsBoxWasHidden == YES){
         [self makeAppcastSettingsVisible:NO forWindow:[notification object]];
     }
