@@ -75,7 +75,7 @@
     if(appCast.updatePublicationDate){
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-        [dateFormatter setDateFormat:@"EEE, dd MMM yyyy hh:mm:ss Z"];
+        [dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss Z"];
         NSXMLElement *itemPublicationDate = [[NSXMLElement alloc] initWithName:@"pubDate" stringValue:[dateFormatter stringFromDate:appCast.updatePublicationDate]];
         [channelItem addChild:itemPublicationDate];
     }
