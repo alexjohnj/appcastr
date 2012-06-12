@@ -11,9 +11,3 @@ Some things that Appcastr doesn't do but should and probably will do in the futu
 - Support for multiple version updates in a single appcast file (currently, Appcastr will only read and edit one update item). 
 - Support for specifying the minimum operating system version for an update (which would work nicely with supporting multiple version updates).
 - Support for specifying delta updates. 
-
-## What's With Appcastr's Icon? 
-
-As I have absolutely no icon design or drawing skills, I decided to start making a generic blue ball icon like nearly every other icon on Mac OS X. When I couldn't figure out how to add shiny gloss to it, I drew an aardvarky-elephant thing on it. Thus, Appcastr's icon was born. I'll do something to make the icon better in the future, don't know what. 
-
-Appcastr will work on Mac OS 10.7.
