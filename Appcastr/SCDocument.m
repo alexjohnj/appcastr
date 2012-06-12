@@ -35,10 +35,9 @@
 {
     [super windowControllerDidLoadNib:aController];
     
-    if ([self isInViewingMode]) { // this block of code is used to configure the old windows being shown in the versions browser
-        [self makeAppcastSettingsVisible:YES forWindow:aController.window];
-        SCDocument *currentlyDisplayedVersion = (SCDocument *)[aController document];
-        [self makeUserInterfaceEditable:NO forDocument:currentlyDisplayedVersion];
+    if ([self isInViewingMode]) { // this body of code is used to configure the old windows being shown in the versions browser
+        [self makeAppcastSettingsVisible:YES forWindow:aController.window]; // expands the appcast settings so that they are viewable in the versions browser 
+        [self makeUserInterfaceEditable:NO forDocument:(SCDocument *)[aController document]]; // it just makes sure that you can't edit their contents
     }
 }
 
@@ -105,7 +104,7 @@
     NSRect appcastConfigBoxFrame = self.appcastSettingsBox.frame;
     
     if(visible == YES){
-        [currentWindow setFrame:NSMakeRect(currentWindowFrame.origin.x, currentWindowFrame.origin.y, currentWindowFrame.size.width, (currentWindowFrame.size.height + appcastConfigBoxFrame.size.height + 4)) display:YES animate:YES];
+        [currentWindow setFrame:NSMakeRect(currentWindowFrame.origin.x, currentWindowFrame.origin.y, currentWindowFrame.size.width, (currentWindowFrame.size.height + appcastConfigBoxFrame.size.height + 4)) display:YES animate:YES]; //we add 4 here to make sure we get 20px clearence between the NSBox and the window's frame. 
         self.appcastSettingsBoxIsHidden = NO;
         [self.appcastSettingsToggleDisclosureTriangle setState:NSOnState];
         [self.appcastSettingsBox setHidden:NO];
@@ -143,7 +142,7 @@
     [self.appcastSettingsToggleDisclosureTriangle setEnabled:NO];
     
     if(self.appcastSettingsBoxWasHidden == YES){
-        [self makeAppcastSettingsVisible:YES forWindow:[notification object]];
+        [self makeAppcastSettingsVisible:YES forWindow:[notification object]]; // the object is the window which entered the versions browser
     }
 }
 
@@ -170,7 +169,7 @@
 
 #pragma mark - Undo Methods
 
-- (void)startObservingAppcastModel:(SCAppcastModel *)model{
+- (void)startObservingAppcastModel:(SCAppcastModel *)model{ 
     [model addObserver:self forKeyPath:@"updateBuildNumber" options:NSKeyValueObservingOptionOld context:NULL];
     [model addObserver:self forKeyPath:@"updateHumanReadableVersionNumber" options:NSKeyValueObservingOptionOld context:NULL];
     [model addObserver:self forKeyPath:@"updateSignature" options:NSKeyValueObservingOptionOld context:NULL];
