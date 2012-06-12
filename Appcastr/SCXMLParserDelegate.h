@@ -16,4 +16,6 @@
 @property (assign) BOOL isItemElement;
 @property (strong) SCAppcastModel *appcastData;
 
+- (void)extractUpdateInformationFromEnclosureAttributes:(NSDictionary *)attributeDict;
+
 @end
