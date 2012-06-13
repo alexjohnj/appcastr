@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SCAppcastModel.h"
 #import "SCXMLParserDelegate.h"
 #import "SCAppcastWriter.h"
 #import "SCAppcastFile.h"
@@ -32,7 +31,7 @@
 
 @property (weak) IBOutlet NSBox *appcastSettingsBox;
 
-- (void)startObservingAppcastModel:(SCAppcastModel *)model;
-- (void)stopObservingAppcastModel:(SCAppcastModel *)model;
+- (void)startObservingUpdateInformation:(SCAppcastItem *)model;
+- (void)stopObservingUpdateInformation:(SCAppcastItem *)model;
 
 @end

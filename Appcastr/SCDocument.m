@@ -18,7 +18,9 @@
     self = [super init];
     if (self) {
         appcastFile = [[SCAppcastFile alloc] init];
-//        [self startObservingAppcastModel:self.appcastData];
+        for(int i = 0; i<self.appcastFile.items.count;i++){
+            [self startObservingUpdateInformation:[self.appcastFile.items objectAtIndex:i]];
+        }
     }
     return self;
 }
@@ -61,7 +63,9 @@
 }
 
 - (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
-//    [self stopObservingAppcastModel:self.appcastData];
+    for(int i = 0; i<self.appcastFile.items.count;i++){
+        [self stopObservingUpdateInformation:[self.appcastFile.items objectAtIndex:i]];
+    }
     NSXMLDocument *appcastXMLDocument = [[NSXMLDocument alloc] initWithContentsOfURL:url options:NSXMLDocumentTidyXML error:nil];
     NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:[appcastXMLDocument XMLData]];
     SCXMLParserDelegate *xmlParserDelegate = [[SCXMLParserDelegate alloc] init];
@@ -78,7 +82,9 @@
     
     else{
         self.appcastFile = xmlParserDelegate.appcastFileRepresentation;
-//        [self startObservingAppcastModel:self.appcastData];
+        for(int i = 0; i<self.appcastFile.items.count;i++){
+            [self startObservingUpdateInformation:[self.appcastFile.items objectAtIndex:i]];
+        }
         return YES;
     }
 }
@@ -121,7 +127,7 @@
 
 #pragma mark - Undo Methods
 
-- (void)startObservingAppcastModel:(SCAppcastModel *)model{ 
+- (void)startObservingUpdateInformation:(SCAppcastItem *)model{ 
     [model addObserver:self forKeyPath:@"updateBuildNumber" options:NSKeyValueObservingOptionOld context:NULL];
     [model addObserver:self forKeyPath:@"updateHumanReadableVersionNumber" options:NSKeyValueObservingOptionOld context:NULL];
     [model addObserver:self forKeyPath:@"updateSignature" options:NSKeyValueObservingOptionOld context:NULL];
@@ -131,14 +137,9 @@
     [model addObserver:self forKeyPath:@"updateLength" options:NSKeyValueObservingOptionOld context:NULL];
     [model addObserver:self forKeyPath:@"updateMimeType" options:NSKeyValueObservingOptionOld context:NULL];
     [model addObserver:self forKeyPath:@"updatePublicationDate" options:NSKeyValueObservingOptionOld context:NULL];
-    
-    [model addObserver:self forKeyPath:@"appCastDescription" options:NSKeyValueObservingOptionOld context:NULL];
-    [model addObserver:self forKeyPath:@"appCastTitle" options:NSKeyValueObservingOptionOld context:NULL];
-    [model addObserver:self forKeyPath:@"appCastLink" options:NSKeyValueObservingOptionOld context:NULL];
-    [model addObserver:self forKeyPath:@"appCastLanguage" options:NSKeyValueObservingOptionOld context:NULL];
 }
 
-- (void)stopObservingAppcastModel:(SCAppcastModel *)model{
+- (void)stopObservingUpdateInformation:(SCAppcastItem *)model{
     [model removeObserver:self forKeyPath:@"updateBuildNumber"];
     [model removeObserver:self forKeyPath:@"updateHumanReadableVersionNumber"];
     [model removeObserver:self forKeyPath:@"updateSignature"];
@@ -148,11 +149,6 @@
     [model removeObserver:self forKeyPath:@"updateLength"];
     [model removeObserver:self forKeyPath:@"updateMimeType"];
     [model removeObserver:self forKeyPath:@"updatePublicationDate"];
-    
-    [model removeObserver:self forKeyPath:@"appCastDescription"];
-    [model removeObserver:self forKeyPath:@"appCastTitle"];
-    [model removeObserver:self forKeyPath:@"appCastLink"];
-    [model removeObserver:self forKeyPath:@"appCastLanguage"];
 }
 
 -(void)changeKeyPath:(NSString *)keyPath ofObject:(id)obj toValue:(id)newValue{
@@ -167,7 +163,9 @@
 }
 
 - (void)dealloc{
-//    [self stopObservingAppcastModel:self.appcastData];
+    for(int i = 0; i<self.appcastFile.items.count;i++){
+        [self stopObservingUpdateInformation:[self.appcastFile.items objectAtIndex:i]];
+    }
 }
 
 @end
