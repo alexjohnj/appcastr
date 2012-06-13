@@ -10,13 +10,15 @@
 
 @implementation SCAppcastWriter
 
-- (NSXMLDocument *)prepareXMLDocumentFromAppcastData:(SCAppcastModel *)appcast{
+- (NSXMLDocument *)prepareXMLDocumentFromAppcastData:(SCAppcastFile *)appcastFile{
     
     NSXMLElement *rootElement = [self buildRootElement];
-    NSXMLElement *channelElement = [self buildChannelElementFromAppcastData:appcast];
-    NSXMLElement *channelItem = [self buildItemElementFromAppcastDatat:appcast];
+    NSXMLElement *channelElement = [self buildChannelElementFromAppcastData:appcastFile];
     
-    [channelElement addChild:channelItem];
+    for(int i = 0; i < appcastFile.items.count; i++){
+        [channelElement addChild:[self buildItemElementFromAppcastData:[appcastFile.items objectAtIndex:i]]];
+    }
+    
     [rootElement addChild:channelElement];
     
     NSXMLDocument *appCastFile = [[NSXMLDocument alloc] initWithRootElement:rootElement];
@@ -53,54 +55,53 @@
     
 }
 
-- (NSXMLElement *)buildChannelElementFromAppcastData:(SCAppcastModel *)appcast{
+- (NSXMLElement *)buildChannelElementFromAppcastData:(SCAppcastFile *)appcastFile{
     NSXMLElement *channelElement = [[NSXMLElement alloc] initWithName:@"channel"];
     
-    if(appcast.appCastTitle){
-        NSXMLElement *channelTitle = [[NSXMLElement alloc] initWithName:@"title" stringValue:appcast.appCastTitle];
+    if(appcastFile.appcastTitle){
+        NSXMLElement *channelTitle = [[NSXMLElement alloc] initWithName:@"title" stringValue:appcastFile.appcastTitle];
         [channelElement addChild:channelTitle];
     }
     
-    if(appcast.appCastLink){
-        NSXMLElement *channelLink = [[NSXMLElement alloc] initWithName:@"link" stringValue:appcast.appCastLink];
+    if(appcastFile.appcastLink){
+        NSXMLElement *channelLink = [[NSXMLElement alloc] initWithName:@"link" stringValue:appcastFile.appcastLink];
         [channelElement addChild:channelLink];
     }
     
-    if(appcast.appCastDescription){
-        NSXMLElement *channelDescription = [[NSXMLElement alloc] initWithName:@"description" stringValue:appcast.appCastDescription];
+    if(appcastFile.appcastDescription){
+        NSXMLElement *channelDescription = [[NSXMLElement alloc] initWithName:@"description" stringValue:appcastFile.appcastDescription];
         [channelElement addChild:channelDescription];
     }
     
-    if(appcast.appCastLanguage){
-        NSXMLElement *channelLanguage = [[NSXMLElement alloc] initWithName:@"language" stringValue:appcast.appCastLanguage];
+    if(appcastFile.appcastLanguage){
+        NSXMLElement *channelLanguage = [[NSXMLElement alloc] initWithName:@"language" stringValue:appcastFile.appcastLanguage];
         [channelElement addChild:channelLanguage];
     }
     
     return channelElement;
-    
 }
 
-- (NSXMLElement *)buildItemElementFromAppcastDatat:(SCAppcastModel *)appcast{
+- (NSXMLElement *)buildItemElementFromAppcastData:(SCAppcastItem *)appcastItem{
     NSXMLElement *channelItem = [[NSXMLElement alloc] initWithName:@"item"];
     
     // Create the channelItem's children
     
-    if(appcast.updateTitle){
-        NSXMLElement *itemTitle = [[NSXMLElement alloc] initWithName:@"title" stringValue:appcast.updateTitle];
+    if(appcastItem.updateTitle){
+        NSXMLElement *itemTitle = [[NSXMLElement alloc] initWithName:@"title" stringValue:appcastItem.updateTitle];
         [channelItem addChild:itemTitle];
     }
     
     
-    if(appcast.updatePublicationDate){
+    if(appcastItem.updatePublicationDate){
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
         [dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss Z"];
-        NSXMLElement *itemPublicationDate = [[NSXMLElement alloc] initWithName:@"pubDate" stringValue:[dateFormatter stringFromDate:appcast.updatePublicationDate]];
+        NSXMLElement *itemPublicationDate = [[NSXMLElement alloc] initWithName:@"pubDate" stringValue:[dateFormatter stringFromDate:appcastItem.updatePublicationDate]];
         [channelItem addChild:itemPublicationDate];
     }
     
-    if(appcast.updateReleaseNotesLink){
-        NSXMLElement *itemReleaseNotesLink = [[NSXMLElement alloc] initWithName:@"sparkle:releaseNotesLink" stringValue:appcast.updateReleaseNotesLink];
+    if(appcastItem.updateReleaseNotesLink){
+        NSXMLElement *itemReleaseNotesLink = [[NSXMLElement alloc] initWithName:@"sparkle:releaseNotesLink" stringValue:appcastItem.updateReleaseNotesLink];
         [channelItem addChild:itemReleaseNotesLink];
     }
     
@@ -110,30 +111,30 @@
     NSMutableArray *enclosureAttributesKeys = [[NSMutableArray alloc] init];
     NSMutableArray *enclosureAttributesValues = [[NSMutableArray alloc] init];
     
-    if(appcast.updateDownloadLink){
+    if(appcastItem.updateDownloadLink){
         NSString *enclosureURLKey = [[NSString alloc] initWithString:@"url"];
-        NSString *enclosureURL = [[NSString alloc] initWithString:appcast.updateDownloadLink];
+        NSString *enclosureURL = [[NSString alloc] initWithString:appcastItem.updateDownloadLink];
         [enclosureAttributesKeys addObject:enclosureURLKey];
         [enclosureAttributesValues addObject:enclosureURL];
     }
     
-    if(appcast.updateBuildNumber){
+    if(appcastItem.updateBuildNumber){
         NSString *enclosureBuildVersionKey = [[NSString alloc] initWithString:@"sparkle:version"];
-        NSString *enclosureBuildVersion = [[NSString alloc] initWithString:appcast.updateBuildNumber];
+        NSString *enclosureBuildVersion = [[NSString alloc] initWithString:appcastItem.updateBuildNumber];
         [enclosureAttributesKeys addObject:enclosureBuildVersionKey];
         [enclosureAttributesValues addObject:enclosureBuildVersion];
     }
     
-    if(appcast.updateHumanReadableVersionNumber){
+    if(appcastItem.updateHumanReadableVersionNumber){
         NSString *enclosureHumanReadableVersionKey = [[NSString alloc] initWithString:@"sparkle:shortVersionString"];
-        NSString *enclosureHumanReadableVersion = [[NSString alloc] initWithString:appcast.updateHumanReadableVersionNumber];
+        NSString *enclosureHumanReadableVersion = [[NSString alloc] initWithString:appcastItem.updateHumanReadableVersionNumber];
         [enclosureAttributesKeys addObject:enclosureHumanReadableVersionKey];
         [enclosureAttributesValues addObject:enclosureHumanReadableVersion];
     }
     
-    if(appcast.updateLength){
+    if(appcastItem.updateLength){
         NSString *enclosureLengthKey = [[NSString alloc] initWithString:@"length"];
-        NSString *enclosureLength = [[NSString alloc] initWithString:appcast.updateLength];
+        NSString *enclosureLength = [[NSString alloc] initWithString:appcastItem.updateLength];
         [enclosureAttributesKeys addObject:enclosureLengthKey];
         [enclosureAttributesValues addObject:enclosureLength];
     }
@@ -152,9 +153,9 @@
     [enclosureAttributesKeys addObject:enclosureTypeKey];
     [enclosureAttributesValues addObject:enclosureType];
     
-    if(appcast.updateSignature){
+    if(appcastItem.updateSignature){
         NSString *enclosureDSASignatureKey = [[NSString alloc] initWithString:@"sparkle:dsaSignature"];
-        NSString *enclosureDSASignature = [[NSString alloc] initWithString:appcast.updateSignature];
+        NSString *enclosureDSASignature = [[NSString alloc] initWithString:appcastItem.updateSignature];
         [enclosureAttributesKeys addObject:enclosureDSASignatureKey];
         [enclosureAttributesValues addObject:enclosureDSASignature];
     }

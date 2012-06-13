@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "SCAppcastModel.h"
+#import "SCAppcastItem.h"
+#import "SCAppcastFile.h"
 
 @interface SCAppcastWriter : NSObject
 
-- (NSXMLDocument *)prepareXMLDocumentFromAppcastData:(SCAppcastModel *)appcast;
+- (NSXMLDocument *)prepareXMLDocumentFromAppcastData:(SCAppcastFile *)appcastFile;
 
 - (NSXMLElement *)buildRootElement;
-- (NSXMLElement *)buildChannelElementFromAppcastData:(SCAppcastModel *)appcast;
-- (NSXMLElement *)buildItemElementFromAppcastDatat:(SCAppcastModel *)appcast;
+- (NSXMLElement *)buildChannelElementFromAppcastData:(SCAppcastFile *)appcastFile;
+- (NSXMLElement *)buildItemElementFromAppcastData:(SCAppcastItem *)appcastItem;
 
 @end

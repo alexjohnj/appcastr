@@ -54,12 +54,12 @@
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
-//    SCAppcastWriter *appcastCreator = [[SCAppcastWriter alloc] init];
-//    NSXMLDocument *appcastFile = [appcastCreator prepareXMLDocumentFromAppcastData:self.appcastData];
-//    
-//    NSData *appcastFileDataRepresentation = [appcastFile XMLDataWithOptions:NSXMLNodePrettyPrint];
-//    
-//    return appcastFileDataRepresentation;
+    SCAppcastWriter *appcastCreator = [[SCAppcastWriter alloc] init];
+    NSXMLDocument *appcastXMLDocument = [appcastCreator prepareXMLDocumentFromAppcastData:self.appcastFile];
+    
+    NSData *appcastFileDataRepresentation = [appcastXMLDocument XMLDataWithOptions:NSXMLNodePrettyPrint];
+    
+    return appcastFileDataRepresentation;
 }
 
 - (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
