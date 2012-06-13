@@ -6,10 +6,10 @@
         <description>Appcast file for the appcast file creation tool appcastr.</description>
         <language>en</language>
         <item>
-            <title>Version 0.1</title>
-            <pubDate>Mon, 11 Jun 2012 11:00:00 +0100</pubDate>
+            <title>Version 0.1.1</title>
+            <pubDate>Wed, 13 Jun 2012 09:57:00 +0100</pubDate>
             <sparkle:releaseNotesLink>http://alexjohnj.github.com/appcastr/changelog.html</sparkle:releaseNotesLink>
-            <enclosure sparkle:version="18" sparkle:shortVersionString="0.1" length="1219959" url="https://github.com/downloads/alexjohnj/appcastr/appcastr-0.1.zip" type="application/octet-stream" sparkle:dsaSignature="MCwCFDA6BvkXMmx930zQkLcYAJ0uWpHHAhQ16IfRoc9I4CFW8tH+fmPnjZTzNA=="></enclosure>
+            <enclosure sparkle:version="32" sparkle:shortVersionString="0.1.1" length="1221230" url="https://github.com/downloads/alexjohnj/appcastr/appcastr-0.1.1.zip" type="application/octet-stream" sparkle:dsaSignature="MCwCFGxYAbUoDW1suSco6Gy2lYxgf+2QAhQY3MpBnh+fPnQMYDwOzwlYWnEqmw=="></enclosure>
         </item>
     </channel>
 </rss>
