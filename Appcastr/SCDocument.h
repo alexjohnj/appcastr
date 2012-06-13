@@ -14,7 +14,7 @@
 @interface SCDocument : NSDocument <NSWindowDelegate>
 
 @property (strong) SCAppcastFile *appcastFile;
-@property (weak) IBOutlet NSObjectController *appcastDataController;
+@property (weak) IBOutlet NSArrayController *appcastUpdatesArrayController;
 
 @property (weak) IBOutlet NSTextField *updateTitleField;
 @property (weak) IBOutlet NSTextField *updateBuildNumberField;
@@ -30,6 +30,12 @@
 @property (weak) IBOutlet NSTextField *appcastDescriptionField;
 
 @property (weak) IBOutlet NSBox *appcastSettingsBox;
+
+- (IBAction)createNewUpdate:(id)sender;
+- (IBAction)deleteOldUpdate:(id)sender;
+
+- (void)insertUpdateIntoArrayController:(SCAppcastItem *)update;
+- (void)removeUpdateFromArrayController:(SCAppcastItem *)update;
 
 - (void)startObservingUpdateInformation:(SCAppcastItem *)model;
 - (void)stopObservingUpdateInformation:(SCAppcastItem *)model;

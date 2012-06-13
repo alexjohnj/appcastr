@@ -223,7 +223,7 @@
 													<double key="NSPercent">0.99581589958159</double>
 												</object>
 											</array>
-											<string key="NSFrame">{{-1, 0}, {100, 366}}</string>
+											<string key="NSFrameSize">{100, 366}</string>
 											<reference key="NSSuperview" ref="472753459"/>
 											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="415154940"/>
@@ -282,7 +282,7 @@
 														<object class="NSTextField" id="257351544">
 															<reference key="NSNextResponder" ref="948387776"/>
 															<int key="NSvFlags">266</int>
-															<string key="NSFrame">{{151, 137}, {386, 22}}</string>
+															<string key="NSFrame">{{151, 137}, {394, 22}}</string>
 															<reference key="NSSuperview" ref="948387776"/>
 															<reference key="NSWindow"/>
 															<reference key="NSNextKeyView" ref="302992010"/>
@@ -376,7 +376,7 @@
 														<object class="NSTextField" id="72158319">
 															<reference key="NSNextResponder" ref="948387776"/>
 															<int key="NSvFlags">266</int>
-															<string key="NSFrame">{{151, 233}, {386, 22}}</string>
+															<string key="NSFrame">{{151, 233}, {394, 22}}</string>
 															<reference key="NSSuperview" ref="948387776"/>
 															<reference key="NSWindow"/>
 															<reference key="NSNextKeyView" ref="737276881"/>
@@ -417,7 +417,7 @@
 														<object class="NSTextField" id="923231752">
 															<reference key="NSNextResponder" ref="948387776"/>
 															<int key="NSvFlags">266</int>
-															<string key="NSFrame">{{151, 169}, {386, 22}}</string>
+															<string key="NSFrame">{{151, 169}, {394, 22}}</string>
 															<reference key="NSSuperview" ref="948387776"/>
 															<reference key="NSWindow"/>
 															<reference key="NSNextKeyView" ref="916305263"/>
@@ -438,7 +438,7 @@
 														<object class="NSTextField" id="921506325">
 															<reference key="NSNextResponder" ref="948387776"/>
 															<int key="NSvFlags">266</int>
-															<string key="NSFrame">{{151, 73}, {386, 22}}</string>
+															<string key="NSFrame">{{151, 73}, {394, 22}}</string>
 															<reference key="NSSuperview" ref="948387776"/>
 															<reference key="NSWindow"/>
 															<reference key="NSNextKeyView" ref="946349296"/>
@@ -479,7 +479,7 @@
 														<object class="NSTextField" id="302665620">
 															<reference key="NSNextResponder" ref="948387776"/>
 															<int key="NSvFlags">266</int>
-															<string key="NSFrame">{{151, 105}, {386, 22}}</string>
+															<string key="NSFrame">{{151, 105}, {394, 22}}</string>
 															<reference key="NSSuperview" ref="948387776"/>
 															<reference key="NSWindow"/>
 															<reference key="NSNextKeyView" ref="267667589"/>
@@ -567,7 +567,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 														<object class="NSTextField" id="9388180">
 															<reference key="NSNextResponder" ref="948387776"/>
 															<int key="NSvFlags">266</int>
-															<string key="NSFrame">{{151, 201}, {386, 22}}</string>
+															<string key="NSFrame">{{151, 201}, {394, 22}}</string>
 															<reference key="NSSuperview" ref="948387776"/>
 															<reference key="NSWindow"/>
 															<reference key="NSNextKeyView" ref="388895113"/>
@@ -608,7 +608,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 														<object class="NSTextField" id="981478980">
 															<reference key="NSNextResponder" ref="948387776"/>
 															<int key="NSvFlags">266</int>
-															<string key="NSFrame">{{151, 41}, {386, 22}}</string>
+															<string key="NSFrame">{{151, 41}, {394, 22}}</string>
 															<reference key="NSSuperview" ref="948387776"/>
 															<reference key="NSWindow"/>
 															<reference key="NSNextKeyView" ref="155504861"/>
@@ -627,14 +627,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 															</object>
 														</object>
 													</array>
-													<string key="NSFrame">{{1, 1}, {555, 265}}</string>
+													<string key="NSFrame">{{1, 1}, {563, 265}}</string>
 													<reference key="NSSuperview" ref="299948380"/>
 													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="952713633"/>
 													<string key="NSReuseIdentifierKey">_NS:11</string>
 												</object>
 											</array>
-											<string key="NSFrame">{{21, 65}, {557, 281}}</string>
+											<string key="NSFrame">{{17, 65}, {565, 281}}</string>
 											<reference key="NSSuperview" ref="474424282"/>
 											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="948387776"/>
@@ -856,6 +856,30 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<reference key="destination" ref="921506325"/>
 					</object>
 					<int key="connectionID">101426</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">appcastUpdatesArrayController</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="802000563"/>
+					</object>
+					<int key="connectionID">103158</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">createNewUpdate:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="515235507"/>
+					</object>
+					<int key="connectionID">103159</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">deleteOldUpdate:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="408452318"/>
+					</object>
+					<int key="connectionID">103160</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -3193,7 +3217,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">103157</int>
+			<int key="maxID">103160</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3208,13 +3232,27 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 				<object class="IBPartialClassDescription">
 					<string key="className">SCDocument</string>
 					<string key="superclassName">NSDocument</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="createNewUpdate:">id</string>
+						<string key="deleteOldUpdate:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="createNewUpdate:">
+							<string key="name">createNewUpdate:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="deleteOldUpdate:">
+							<string key="name">deleteOldUpdate:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="appcastDataController">NSObjectController</string>
 						<string key="appcastDescriptionField">NSTextField</string>
 						<string key="appcastLanguageField">NSTextField</string>
 						<string key="appcastLinkField">NSTextField</string>
 						<string key="appcastNameField">NSTextField</string>
 						<string key="appcastSettingsBox">NSBox</string>
+						<string key="appcastUpdatesArrayController">NSArrayController</string>
 						<string key="updateBuildNumberField">NSTextField</string>
 						<string key="updateDownloadLinkField">NSTextField</string>
 						<string key="updatePublicationDatePicker">NSDatePicker</string>
@@ -3225,10 +3263,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<string key="updateVersionNumberField">NSTextField</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="appcastDataController">
-							<string key="name">appcastDataController</string>
-							<string key="candidateClassName">NSObjectController</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="appcastDescriptionField">
 							<string key="name">appcastDescriptionField</string>
 							<string key="candidateClassName">NSTextField</string>
@@ -3248,6 +3282,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<object class="IBToOneOutletInfo" key="appcastSettingsBox">
 							<string key="name">appcastSettingsBox</string>
 							<string key="candidateClassName">NSBox</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="appcastUpdatesArrayController">
+							<string key="name">appcastUpdatesArrayController</string>
+							<string key="candidateClassName">NSArrayController</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="updateBuildNumberField">
 							<string key="name">updateBuildNumberField</string>
