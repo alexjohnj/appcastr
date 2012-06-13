@@ -55,7 +55,7 @@
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
     SCAppcastWriter *appcastCreator = [[SCAppcastWriter alloc] init];
-    NSXMLDocument *appcastFile = [appcastCreator prepareXMLDocumentFromAppCastData:self.appcastData];
+    NSXMLDocument *appcastFile = [appcastCreator prepareXMLDocumentFromAppcastData:self.appcastData];
     
     NSData *appcastFileDataRepresentation = [appcastFile XMLDataWithOptions:NSXMLNodePrettyPrint];
     

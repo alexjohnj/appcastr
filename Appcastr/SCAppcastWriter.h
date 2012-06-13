@@ -11,6 +11,10 @@
 
 @interface SCAppcastWriter : NSObject
 
-- (NSXMLDocument *)prepareXMLDocumentFromAppCastData:(SCAppcastModel *)appCast;
+- (NSXMLDocument *)prepareXMLDocumentFromAppcastData:(SCAppcastModel *)appcast;
+
+- (NSXMLElement *)buildRootElement;
+- (NSXMLElement *)buildChannelElementFromAppcastData:(SCAppcastModel *)appcast;
+- (NSXMLElement *)buildItemElementFromAppcastDatat:(SCAppcastModel *)appcast;
 
 @end
