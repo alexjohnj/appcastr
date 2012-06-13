@@ -10,12 +10,26 @@
 
 @implementation SCNSSplitViewDelegate
 
-- (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMin ofSubviewAt:(NSInteger)dividerIndex{
-    return proposedMin + 100;
+#define kMinSplitView 100.0f;
+#define kMaxSplitView 150.0f
+
+- (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedCoordinate ofSubviewAt:(NSInteger)index
+{
+	return kMinSplitView
 }
 
-- (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMax ofSubviewAt:(NSInteger)dividerIndex{
-    return 150;
+- (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedCoordinate ofSubviewAt:(NSInteger)index
+{
+	return kMaxSplitView;
 }
 
+- (BOOL)splitView:(NSSplitView *)splitView shouldAdjustSizeOfSubview:(NSView *)subview{
+    if(subview == [[splitView subviews]objectAtIndex:0]){
+        return NO;
+    }
+    
+    else{
+        return YES;
+    }
+}
 @end
