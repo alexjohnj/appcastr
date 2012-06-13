@@ -10,10 +10,11 @@
 #import "SCAppcastModel.h"
 #import "SCXMLParserDelegate.h"
 #import "SCAppcastWriter.h"
+#import "SCAppcastFile.h"
 
 @interface SCDocument : NSDocument <NSWindowDelegate>
 
-@property (strong) SCAppcastModel *appcastData;
+@property (strong) SCAppcastFile *appcastFile;
 @property (weak) IBOutlet NSObjectController *appcastDataController;
 
 @property (weak) IBOutlet NSTextField *updateTitleField;

@@ -21,6 +21,8 @@
 		FA9B4C091580DAC800599590 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9B4C071580DAC800599590 /* MainMenu.xib */; };
 		FA9B4C1E1580E02200599590 /* SCAppcastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4C1D1580E02200599590 /* SCAppcastModel.m */; };
 		FA9B4C211580E0AA00599590 /* SCXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4C201580E0AA00599590 /* SCXMLParserDelegate.m */; };
+		FAF2EC5D1588C85200612324 /* SCAppcastFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2EC5C1588C85200612324 /* SCAppcastFile.m */; };
+		FAF2EC611588C85B00612324 /* SCAppcastItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2EC601588C85B00612324 /* SCAppcastItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,6 +62,10 @@
 		FA9B4C1D1580E02200599590 /* SCAppcastModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAppcastModel.m; sourceTree = "<group>"; };
 		FA9B4C1F1580E0AA00599590 /* SCXMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCXMLParserDelegate.h; sourceTree = "<group>"; };
 		FA9B4C201580E0AA00599590 /* SCXMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCXMLParserDelegate.m; sourceTree = "<group>"; };
+		FAF2EC5B1588C85200612324 /* SCAppcastFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAppcastFile.h; sourceTree = "<group>"; };
+		FAF2EC5C1588C85200612324 /* SCAppcastFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAppcastFile.m; sourceTree = "<group>"; };
+		FAF2EC5F1588C85B00612324 /* SCAppcastItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAppcastItem.h; sourceTree = "<group>"; };
+		FAF2EC601588C85B00612324 /* SCAppcastItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAppcastItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,10 @@
 		FA9B4BF51580DAC800599590 /* Appcastr */ = {
 			isa = PBXGroup;
 			children = (
+				FAF2EC5F1588C85B00612324 /* SCAppcastItem.h */,
+				FAF2EC601588C85B00612324 /* SCAppcastItem.m */,
+				FAF2EC5B1588C85200612324 /* SCAppcastFile.h */,
+				FAF2EC5C1588C85200612324 /* SCAppcastFile.m */,
 				FA31D0A21580F3F200B1F665 /* SCAppcastWriter.h */,
 				FA31D0A31580F3F200B1F665 /* SCAppcastWriter.m */,
 				FA9B4C1F1580E0AA00599590 /* SCXMLParserDelegate.h */,
@@ -217,6 +227,8 @@
 				FA9B4C1E1580E02200599590 /* SCAppcastModel.m in Sources */,
 				FA9B4C211580E0AA00599590 /* SCXMLParserDelegate.m in Sources */,
 				FA31D0A41580F3F200B1F665 /* SCAppcastWriter.m in Sources */,
+				FAF2EC5D1588C85200612324 /* SCAppcastFile.m in Sources */,
+				FAF2EC611588C85B00612324 /* SCAppcastItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

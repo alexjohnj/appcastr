@@ -10,15 +10,15 @@
 
 @implementation SCDocument
 @synthesize updateTitleField, updateBuildNumberField, updateVersionNumberField, updateDownloadLinkField, updateReleaseNotesDownloadLinkField, updateSignatureField, updateSizeField, updatePublicationDatePicker, appcastNameField, appcastLinkField, appcastLanguageField, appcastDescriptionField;
-@synthesize appcastData, appcastDataController;
+@synthesize appcastFile, appcastDataController;
 @synthesize appcastSettingsBox, appcastSettingsBoxIsHidden, appcastSettingsToggleDisclosureTriangle, appcastSettingsBoxWasHidden, appcastSettingsClickableLabel;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        appcastData = [[SCAppcastModel alloc] init];
-        [self startObservingAppcastModel:self.appcastData];
+        appcastFile = [[SCAppcastFile alloc] init];
+//        [self startObservingAppcastModel:self.appcastData];
         appcastSettingsBoxIsHidden = YES;
     }
     return self;
@@ -54,18 +54,18 @@
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
-    SCAppcastWriter *appcastCreator = [[SCAppcastWriter alloc] init];
-    NSXMLDocument *appcastFile = [appcastCreator prepareXMLDocumentFromAppcastData:self.appcastData];
-    
-    NSData *appcastFileDataRepresentation = [appcastFile XMLDataWithOptions:NSXMLNodePrettyPrint];
-    
-    return appcastFileDataRepresentation;
+//    SCAppcastWriter *appcastCreator = [[SCAppcastWriter alloc] init];
+//    NSXMLDocument *appcastFile = [appcastCreator prepareXMLDocumentFromAppcastData:self.appcastData];
+//    
+//    NSData *appcastFileDataRepresentation = [appcastFile XMLDataWithOptions:NSXMLNodePrettyPrint];
+//    
+//    return appcastFileDataRepresentation;
 }
 
 - (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
-    [self stopObservingAppcastModel:self.appcastData];
-    NSXMLDocument *appcastFile = [[NSXMLDocument alloc] initWithContentsOfURL:url options:NSXMLDocumentTidyXML error:nil];
-    NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:[appcastFile XMLData]];
+//    [self stopObservingAppcastModel:self.appcastData];
+    NSXMLDocument *appcastXMLDocument = [[NSXMLDocument alloc] initWithContentsOfURL:url options:NSXMLDocumentTidyXML error:nil];
+    NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:[appcastXMLDocument XMLData]];
     SCXMLParserDelegate *xmlParserDelegate = [[SCXMLParserDelegate alloc] init];
     
     [xmlParser setDelegate:xmlParserDelegate];
@@ -79,8 +79,8 @@
     }
     
     else{
-        self.appcastData = xmlParserDelegate.appcastData;
-        [self startObservingAppcastModel:self.appcastData];
+        self.appcastFile = xmlParserDelegate.appcastFileRepresentation;
+//        [self startObservingAppcastModel:self.appcastData];
         return YES;
     }
 }
@@ -229,7 +229,7 @@
 }
 
 - (void)dealloc{
-    [self stopObservingAppcastModel:self.appcastData];
+//    [self stopObservingAppcastModel:self.appcastData];
 }
 
 @end

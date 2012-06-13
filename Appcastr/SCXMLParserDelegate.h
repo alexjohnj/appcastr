@@ -8,13 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "SCAppcastModel.h"
+#import "SCAppcastItem.h"
+#import "SCAppcastFile.h"
 
 @interface SCXMLParserDelegate : NSObject <NSXMLParserDelegate>
 
 @property (strong) NSString *currentElement; 
 @property (strong) NSDictionary *currentAttributes;
 @property (assign) BOOL isItemElement;
-@property (strong) SCAppcastModel *appcastData;
+@property (strong) SCAppcastFile *appcastFileRepresentation;
+@property (strong) SCAppcastItem *currentAppcastItem;
 
 - (void)extractUpdateInformationFromEnclosureAttributes:(NSDictionary *)attributeDict;
 
