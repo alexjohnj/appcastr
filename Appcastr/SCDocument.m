@@ -11,7 +11,7 @@
 @implementation SCDocument
 @synthesize updateTitleField, updateBuildNumberField, updateVersionNumberField, updateDownloadLinkField, updateReleaseNotesDownloadLinkField, updateSignatureField, updateSizeField, updatePublicationDatePicker, appcastNameField, appcastLinkField, appcastLanguageField, appcastDescriptionField;
 @synthesize appcastFile, appcastDataController;
-@synthesize appcastSettingsBox, appcastSettingsBoxIsHidden, appcastSettingsToggleDisclosureTriangle, appcastSettingsBoxWasHidden, appcastSettingsClickableLabel;
+@synthesize appcastSettingsBox;
 
 - (id)init
 {
@@ -19,7 +19,6 @@
     if (self) {
         appcastFile = [[SCAppcastFile alloc] init];
 //        [self startObservingAppcastModel:self.appcastData];
-        appcastSettingsBoxIsHidden = YES;
     }
     return self;
 }
@@ -36,7 +35,6 @@
     [super windowControllerDidLoadNib:aController];
     
     if ([self isInViewingMode]) { // this body of code is used to configure the old windows being shown in the versions browser
-        [self makeAppcastSettingsVisible:YES forWindow:aController.window]; // expands the appcast settings so that they are viewable in the versions browser 
         [self makeUserInterfaceInteractive:NO forDocument:(SCDocument *)[aController document]]; // it just makes sure that you can't edit their contents
     }
 }
@@ -85,50 +83,6 @@
     }
 }
 
-# pragma mark - Appcast Settings Visibility Code
-
-- (IBAction)toggleAppcastSettingsVisibility:(id)sender{
-    if(sender == self.appcastSettingsClickableLabel){
-        switch (self.appcastSettingsToggleDisclosureTriangle.state) {
-            case NSOnState:
-                self.appcastSettingsToggleDisclosureTriangle.state = NSOffState;
-                break;
-                
-            case NSOffState:
-                self.appcastSettingsToggleDisclosureTriangle.state = NSOnState;
-                break;
-        }
-    }
-    
-    switch (self.appcastSettingsToggleDisclosureTriangle.state) {
-        case NSOnState:
-            [self makeAppcastSettingsVisible:YES forWindow:[sender window]];
-            break;
-        case NSOffState:
-            [self makeAppcastSettingsVisible:NO forWindow:[sender window]];
-            break;
-    }
-}
-
-- (void)makeAppcastSettingsVisible:(BOOL)visible forWindow:(NSWindow *)window{
-    NSWindow *currentWindow = window;
-    NSRect currentWindowFrame = currentWindow.frame;
-    NSRect appcastConfigBoxFrame = self.appcastSettingsBox.frame;
-    
-    if(visible == YES){
-        [self.appcastSettingsToggleDisclosureTriangle setState:NSOnState];
-        [self.appcastSettingsBox setHidden:NO];
-        [currentWindow setFrame:NSMakeRect(currentWindowFrame.origin.x, currentWindowFrame.origin.y, currentWindowFrame.size.width, (currentWindowFrame.size.height + appcastConfigBoxFrame.size.height + 4)) display:YES animate:YES]; //we add 4 here to make sure we get 20px clearence between the NSBox and the window's frame. 
-        self.appcastSettingsBoxIsHidden = NO;
-    }
-    else{
-        [self.appcastSettingsToggleDisclosureTriangle setState:NSOffState];
-        [currentWindow setFrame:NSMakeRect(currentWindowFrame.origin.x, currentWindowFrame.origin.y, currentWindowFrame.size.width, (currentWindowFrame.size.height - appcastConfigBoxFrame.size.height - 4)) display:YES animate:YES]; //likewise subtract 4 here to get the same 20px clearence.
-        self.appcastSettingsBoxIsHidden = YES;
-        [self.appcastSettingsBox setHidden:YES];
-    }
-}
-
 - (void)makeUserInterfaceInteractive:(BOOL)editable forDocument:(SCDocument *)document{
     if(document.isInViewingMode){
         [document.updateTitleField setEditable:editable];
@@ -145,40 +99,24 @@
         [document.appcastLanguageField setEditable:editable];
         [document.appcastDescriptionField setEditable:editable];
     }
-    
-    [document.appcastSettingsToggleDisclosureTriangle setEnabled:editable]; // again, the argument name doesn't make a lot of sense. 
-    [document.appcastSettingsClickableLabel setEnabled:editable];
 }
 
 #pragma mark - Versions Customisation
 
 - (void)windowWillEnterVersionBrowser:(NSNotification *)notification{
-    self.appcastSettingsBoxWasHidden = [self.appcastSettingsBox isHidden];
     [self makeUserInterfaceInteractive:NO forDocument:self];
-    if(self.appcastSettingsBoxWasHidden == YES){
-        [self makeAppcastSettingsVisible:YES forWindow:[notification object]]; // the object is the window which entered the versions browser
-    }
 }
 
 - (void)windowDidExitVersionBrowser:(NSNotification *)notification{
     [self makeUserInterfaceInteractive:YES forDocument:self];
-    if(self.appcastSettingsBoxWasHidden == YES){
-        [self makeAppcastSettingsVisible:NO forWindow:[notification object]];
-    }
 }
 
 #pragma mark - Window Restoration
 
 - (void)window:(NSWindow *)window willEncodeRestorableState:(NSCoder *)state{
-    NSNumber *appcastSettingsIsHidden = [NSNumber numberWithBool:self.appcastSettingsBox.isHidden];
-    [state encodeObject:appcastSettingsIsHidden forKey:@"appcastSettingsIsHidden"];
 }
 
 - (void)window:(NSWindow *)window didDecodeRestorableState:(NSCoder *)state{
-    self.appcastSettingsBoxIsHidden = [[state decodeObjectForKey:@"appcastSettingsIsHidden"] boolValue];
-    if(self.appcastSettingsBoxIsHidden == NO){
-        [self makeAppcastSettingsVisible:YES forWindow:window];
-    }
 }
 
 #pragma mark - Undo Methods

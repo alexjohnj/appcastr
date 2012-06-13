@@ -31,14 +31,6 @@
 @property (weak) IBOutlet NSTextField *appcastDescriptionField;
 
 @property (weak) IBOutlet NSBox *appcastSettingsBox;
-@property (weak) IBOutlet NSButton *appcastSettingsToggleDisclosureTriangle;
-@property (weak) IBOutlet NSButton *appcastSettingsClickableLabel;
-@property (assign) BOOL appcastSettingsBoxIsHidden;
-@property (assign) BOOL appcastSettingsBoxWasHidden;
-
-- (IBAction)toggleAppcastSettingsVisibility:(id)sender;
-- (void)makeAppcastSettingsVisible:(BOOL)visible forWindow:(NSWindow *)window;
-- (void)makeUserInterfaceInteractive:(BOOL)editable forDocument:(SCDocument *)document;
 
 - (void)startObservingAppcastModel:(SCAppcastModel *)model;
 - (void)stopObservingAppcastModel:(SCAppcastModel *)model;
