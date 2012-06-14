@@ -17,4 +17,7 @@
 @property (strong) NSString *appcastLink;
 @property (strong) NSString *appcastLanguage;
 
+- (void)insertObject:(SCAppcastItem *)object inItemsAtIndex:(NSUInteger)index;
+- (void)removeObjectFromItemsAtIndex:(NSUInteger)index;
+
 @end

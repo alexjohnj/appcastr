@@ -129,27 +129,14 @@
 
 - (IBAction)createNewUpdate:(id)sender{
     SCAppcastItem *newUpdate = [self.appcastUpdatesArrayController newObject];
-    [self insertUpdateIntoArrayController:newUpdate];
+    [self.appcastUpdatesArrayController addObject:newUpdate];
+    [self startObservingUpdateInformation:newUpdate];
 }
 
 - (IBAction)deleteOldUpdate:(id)sender{
-    NSInteger selectionIndex = self.appcastUpdatesArrayController.selectionIndex;
-    SCAppcastItem *updateToRemove = [self.appcastUpdatesArrayController.content objectAtIndex:selectionIndex];
-    [self removeUpdateFromArrayController:updateToRemove];
-}
-
-- (void)insertUpdateIntoArrayController:(SCAppcastItem *)update{
-    [[[self undoManager] prepareWithInvocationTarget:self] removeUpdateFromArrayController:update];
-    
-    [self.appcastUpdatesArrayController addObject:update];
-    [self startObservingUpdateInformation:update];
-}
-
-- (void)removeUpdateFromArrayController:(SCAppcastItem *)update{
-    [[[self undoManager] prepareWithInvocationTarget:self] insertUpdateIntoArrayController:update];
-    
-    [self.appcastUpdatesArrayController removeObject:update];
-    [self stopObservingUpdateInformation:update];
+    SCAppcastItem *oldUpdate = [self.appcastFile.items objectAtIndex:self.appcastUpdatesArrayController.selectionIndex];
+    [self.appcastUpdatesArrayController removeObjectAtArrangedObjectIndex:self.appcastUpdatesArrayController.selectionIndex];
+    [self stopObservingUpdateInformation:oldUpdate];
 }
 
 #pragma mark - Undo Methods

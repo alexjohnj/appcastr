@@ -34,9 +34,6 @@
 - (IBAction)createNewUpdate:(id)sender;
 - (IBAction)deleteOldUpdate:(id)sender;
 
-- (void)insertUpdateIntoArrayController:(SCAppcastItem *)update;
-- (void)removeUpdateFromArrayController:(SCAppcastItem *)update;
-
 - (void)startObservingUpdateInformation:(SCAppcastItem *)model;
 - (void)stopObservingUpdateInformation:(SCAppcastItem *)model;
 

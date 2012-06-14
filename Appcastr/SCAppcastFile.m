@@ -23,8 +23,20 @@
         
         items = [[NSMutableArray alloc] init];
     }
-    
     return self;
+}
+
+- (void)insertObject:(SCAppcastItem *)object inItemsAtIndex:(NSUInteger)index{
+    NSUndoManager *undo = [[[NSDocumentController sharedDocumentController] currentDocument] undoManager];
+    [[undo prepareWithInvocationTarget:self] removeObjectFromItemsAtIndex:index];
+    [items insertObject:object atIndex:index];
+}
+
+- (void)removeObjectFromItemsAtIndex:(NSUInteger)index{
+    SCAppcastItem *appcastItem = [self.items objectAtIndex:index];
+    NSUndoManager *undo = [[[NSDocumentController sharedDocumentController] currentDocument] undoManager];
+    [[undo prepareWithInvocationTarget:self] insertObject:appcastItem inItemsAtIndex:index];
+    [items removeObjectAtIndex:index];
 }
 
 @end
