@@ -17,9 +17,6 @@
     self = [super init];
     if (self) {
         _appcastFile = [[SCAppcastFile alloc] init];
-        for(int i = 0; i < self.appcastFile.items.count; i++){
-            [self startObservingUpdateInformation:[self.appcastFile.items objectAtIndex:i]];
-        }
     }
     return self;
 }
@@ -34,6 +31,7 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController
 {
     [super windowControllerDidLoadNib:aController];
+    
     NSUInteger arrayControllerCount = [(NSArray *)[self.appcastUpdatesArrayController content] count];
     if(arrayControllerCount > 0)
         [self.sideBarTable selectRowIndexes:[NSIndexSet indexSetWithIndex:self.appcastUpdatesArrayController.selectionIndex] 
@@ -66,10 +64,12 @@
 }
 
 - (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
-    for(int i = 0; i<self.appcastFile.items.count;i++){
-        [self stopObservingUpdateInformation:[self.appcastFile.items objectAtIndex:i]];
+    for(SCAppcastItem *item in self.appcastFile.items){ // we remove all the observers here because this method is called when restoring from a previous version before dealloc is called, so we'd end up deallocing objects that are still being observed if we don't remove the observers here. 
+        [self stopObservingUpdateInformation:item];
     }
-    NSXMLDocument *appcastXMLDocument = [[NSXMLDocument alloc] initWithContentsOfURL:url options:NSXMLDocumentTidyXML error:nil];
+    
+    NSXMLDocument *appcastXMLDocument = [[NSXMLDocument alloc] initWithContentsOfURL:url 
+                                                                             options:NSXMLDocumentTidyXML error:nil];
     NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:[appcastXMLDocument XMLData]];
     SCXMLParserDelegate *xmlParserDelegate = [[SCXMLParserDelegate alloc] init];
     
@@ -85,8 +85,8 @@
     
     else{
         self.appcastFile = xmlParserDelegate.appcastFileRepresentation;
-        for(int i = 0; i<self.appcastFile.items.count;i++){
-            [self startObservingUpdateInformation:[self.appcastFile.items objectAtIndex:i]];
+        for(SCAppcastItem *item in self.appcastFile.items){
+            [self startObservingUpdateInformation:item];
         }
         return YES;
     }
@@ -133,13 +133,10 @@
 - (IBAction)createNewUpdate:(id)sender{
     SCAppcastItem *newUpdate = [self.appcastUpdatesArrayController newObject];
     [self.appcastUpdatesArrayController addObject:newUpdate];
-    [self startObservingUpdateInformation:newUpdate];
 }
 
 - (IBAction)deleteOldUpdate:(id)sender{
-    SCAppcastItem *oldUpdate = [self.appcastFile.items objectAtIndex:self.appcastUpdatesArrayController.selectionIndex];
     [self.appcastUpdatesArrayController removeObjectAtArrangedObjectIndex:self.appcastUpdatesArrayController.selectionIndex];
-    [self stopObservingUpdateInformation:oldUpdate];
 }
 
 #pragma mark - Undo Methods
@@ -180,8 +177,9 @@
 }
 
 - (void)dealloc{
-    for(int i = 0; i < self.appcastFile.items.count; i++){
-        [self stopObservingUpdateInformation:[self.appcastFile.items objectAtIndex:i]];
+    NSLog(@"Dealloc called");
+    for(SCAppcastItem *item in self.appcastFile.items){
+        [self stopObservingUpdateInformation:item];
     }
 }
 

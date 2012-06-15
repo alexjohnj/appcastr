@@ -7,21 +7,23 @@
 //
 
 #import "SCAppcastFile.h"
+#import "SCDocument.h"
 
 @implementation SCAppcastFile
 
-@synthesize appcastLink, appcastTitle, appcastLanguage, appcastDescription, items;
+@synthesize appcastLink = _appcastLink, appcastTitle = _appcastTitle, appcastLanguage = _appcastLanguage, appcastDescription = _appcastDescription, items = _items;
+@synthesize currentDoc = _currentDoc;
 
 - (id)init{
     self = [super init];
     
     if(self){
-        appcastTitle = [[NSString alloc] init];
-        appcastLink = [[NSString alloc] init];
-        appcastLanguage = [[NSString alloc] init];
-        appcastDescription = [[NSString alloc] init];
+        _appcastTitle = [[NSString alloc] init];
+        _appcastLink = [[NSString alloc] init];
+        _appcastLanguage = [[NSString alloc] init];
+        _appcastDescription = [[NSString alloc] init];
         
-        items = [[NSMutableArray alloc] init];
+        _items = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -29,14 +31,16 @@
 - (void)insertObject:(SCAppcastItem *)object inItemsAtIndex:(NSUInteger)index{
     NSUndoManager *undo = [[[NSDocumentController sharedDocumentController] currentDocument] undoManager];
     [[undo prepareWithInvocationTarget:self] removeObjectFromItemsAtIndex:index];
-    [items insertObject:object atIndex:index];
+    [_items insertObject:object atIndex:index];
+    [[[NSDocumentController sharedDocumentController] currentDocument] startObservingUpdateInformation:object];
 }
 
 - (void)removeObjectFromItemsAtIndex:(NSUInteger)index{
     SCAppcastItem *appcastItem = [self.items objectAtIndex:index];
     NSUndoManager *undo = [[[NSDocumentController sharedDocumentController] currentDocument] undoManager];
     [[undo prepareWithInvocationTarget:self] insertObject:appcastItem inItemsAtIndex:index];
-    [items removeObjectAtIndex:index];
+    [_items removeObjectAtIndex:index];
+    [[[NSDocumentController sharedDocumentController] currentDocument] stopObservingUpdateInformation:appcastItem];
 }
 
 @end

@@ -9,7 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "SCAppcastItem.h"
 
+@class SCDocument;
+
 @interface SCAppcastFile : NSObject
+
+@property (weak) SCDocument *currentDoc;
 
 @property (copy) NSMutableArray *items; 
 @property (strong) NSString *appcastDescription;
