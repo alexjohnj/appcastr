@@ -18,7 +18,7 @@
     self = [super init];
     if (self) {
         appcastFile = [[SCAppcastFile alloc] init];
-        for(int i = 0; i<self.appcastFile.items.count;i++){
+        for(int i = 0; i < self.appcastFile.items.count; i++){
             [self startObservingUpdateInformation:[self.appcastFile.items objectAtIndex:i]];
         }
     }
@@ -177,7 +177,7 @@
 }
 
 - (void)dealloc{
-    for(int i = 0; i<self.appcastFile.items.count;i++){
+    for(int i = 0; i < self.appcastFile.items.count; i++){
         [self stopObservingUpdateInformation:[self.appcastFile.items objectAtIndex:i]];
     }
 }
