@@ -9,15 +9,14 @@
 #import "SCDocument.h"
 
 @implementation SCDocument
-@synthesize updateTitleField, updateBuildNumberField, updateVersionNumberField, updateDownloadLinkField, updateReleaseNotesDownloadLinkField, updateSignatureField, updateSizeField, updatePublicationDatePicker, appcastNameField, appcastLinkField, appcastLanguageField, appcastDescriptionField;
-@synthesize appcastFile, appcastUpdatesArrayController;
-@synthesize appcastSettingsBox;
+@synthesize updateTitleField, updateBuildNumberField, updateVersionNumberField, updateDownloadLinkField, updateReleaseNotesDownloadLinkField, updateSignatureField, updateSizeField, updatePublicationDatePicker, appcastNameField, appcastLinkField, appcastLanguageField, appcastDescriptionField, sideBarTable;
+@synthesize appcastFile = _appcastFile, appcastUpdatesArrayController;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        appcastFile = [[SCAppcastFile alloc] init];
+        _appcastFile = [[SCAppcastFile alloc] init];
         for(int i = 0; i < self.appcastFile.items.count; i++){
             [self startObservingUpdateInformation:[self.appcastFile.items objectAtIndex:i]];
         }
@@ -35,8 +34,12 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController
 {
     [super windowControllerDidLoadNib:aController];
+    NSUInteger arrayControllerCount = [(NSArray *)[self.appcastUpdatesArrayController content] count];
+    if(arrayControllerCount > 0)
+        [self.sideBarTable selectRowIndexes:[NSIndexSet indexSetWithIndex:self.appcastUpdatesArrayController.selectionIndex] 
+                       byExtendingSelection:NO];
     
-    if ([self isInViewingMode]) { // this body of code is used to configure the old windows being shown in the versions browser
+    else if ([self isInViewingMode]) { // this body of code is used to configure the old windows being shown in the versions browser
         [self makeUserInterfaceInteractive:NO forDocument:(SCDocument *)[aController document]]; // it just makes sure that you can't edit their contents
     }
 }

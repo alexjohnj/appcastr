@@ -16,6 +16,8 @@
 @property (strong) SCAppcastFile *appcastFile;
 @property (weak) IBOutlet NSArrayController *appcastUpdatesArrayController;
 
+@property (weak) IBOutlet NSTableView *sideBarTable;
+
 @property (weak) IBOutlet NSTextField *updateTitleField;
 @property (weak) IBOutlet NSTextField *updateBuildNumberField;
 @property (weak) IBOutlet NSTextField *updateVersionNumberField;
@@ -28,8 +30,6 @@
 @property (weak) IBOutlet NSTextField *appcastLinkField;
 @property (weak) IBOutlet NSTextField *appcastLanguageField;
 @property (weak) IBOutlet NSTextField *appcastDescriptionField;
-
-@property (weak) IBOutlet NSBox *appcastSettingsBox;
 
 - (IBAction)createNewUpdate:(id)sender;
 - (IBAction)deleteOldUpdate:(id)sender;
