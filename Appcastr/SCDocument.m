@@ -37,7 +37,7 @@
         [self.sideBarTable selectRowIndexes:[NSIndexSet indexSetWithIndex:self.appcastUpdatesArrayController.selectionIndex] 
                        byExtendingSelection:NO];
     
-    else if ([self isInViewingMode]) { // this body of code is used to configure the old windows being shown in the versions browser
+    if ([self isInViewingMode]) { // this body of code is used to configure the old windows being shown in the versions browser
         [self makeUserInterfaceInteractive:NO forDocument:(SCDocument *)[aController document]]; // it just makes sure that you can't edit their contents
     }
 }
