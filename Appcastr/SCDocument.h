@@ -14,7 +14,7 @@
 @interface SCDocument : NSDocument <NSWindowDelegate>
 
 @property (strong) SCAppcastFile *appcastFile;
-@property (weak) IBOutlet NSArrayController *appcastUpdatesArrayController;
+@property (strong) IBOutlet NSArrayController *appcastUpdatesArrayController;
 
 @property (weak) IBOutlet NSTableView *sideBarTable;
 
