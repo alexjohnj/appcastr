@@ -27,10 +27,6 @@
 @property (weak) IBOutlet NSTextField *updateSignatureField;
 @property (weak) IBOutlet NSTextField *updateSizeField;
 @property (weak) IBOutlet NSDatePicker *updatePublicationDatePicker;
-@property (weak) IBOutlet NSTextField *appcastNameField;
-@property (weak) IBOutlet NSTextField *appcastLinkField;
-@property (weak) IBOutlet NSTextField *appcastLanguageField;
-@property (weak) IBOutlet NSTextField *appcastDescriptionField;
 
 - (IBAction)createNewUpdate:(id)sender;
 - (IBAction)deleteOldUpdate:(id)sender;

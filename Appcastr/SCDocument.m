@@ -9,7 +9,7 @@
 #import "SCDocument.h"
 
 @implementation SCDocument
-@synthesize updateTitleField, updateBuildNumberField, updateVersionNumberField, updateDownloadLinkField, updateReleaseNotesDownloadLinkField, updateSignatureField, updateSizeField, updatePublicationDatePicker, appcastNameField, appcastLinkField, appcastLanguageField, appcastDescriptionField, sideBarTable;
+@synthesize updateTitleField, updateBuildNumberField, updateVersionNumberField, updateDownloadLinkField, updateReleaseNotesDownloadLinkField, updateSignatureField, updateSizeField, updatePublicationDatePicker, sideBarTable;
 @synthesize appcastFile = _appcastFile, appcastUpdatesArrayController;
 
 - (id)init
@@ -92,6 +92,16 @@
     return [super revertToContentsOfURL:url ofType:typeName error:outError];
 } 
 
+#pragma mark - Versions Customisation
+
+- (void)windowWillEnterVersionBrowser:(NSNotification *)notification{
+    [self makeUserInterfaceInteractive:NO forDocument:self];
+}
+
+- (void)windowDidExitVersionBrowser:(NSNotification *)notification{
+    [self makeUserInterfaceInteractive:YES forDocument:self];
+}
+
 - (void)makeUserInterfaceInteractive:(BOOL)editable forDocument:(SCDocument *)document{
     if(document.isInViewingMode){
         [document.updateTitleField setEditable:editable];
@@ -102,22 +112,7 @@
         [document.updateSignatureField setEditable:editable];
         [document.updateSizeField setEditable:editable];
         [document.updatePublicationDatePicker setEnabled:editable]; // Haha, this doesn't make much sense with the editable argument. 
-        
-        [document.appcastNameField setEditable:editable];
-        [document.appcastLinkField setEditable:editable];
-        [document.appcastLanguageField setEditable:editable];
-        [document.appcastDescriptionField setEditable:editable];
     }
-}
-
-#pragma mark - Versions Customisation
-
-- (void)windowWillEnterVersionBrowser:(NSNotification *)notification{
-    [self makeUserInterfaceInteractive:NO forDocument:self];
-}
-
-- (void)windowDidExitVersionBrowser:(NSNotification *)notification{
-    [self makeUserInterfaceInteractive:YES forDocument:self];
 }
 
 #pragma mark - Window Restoration
