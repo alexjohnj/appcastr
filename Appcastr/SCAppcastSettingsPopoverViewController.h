@@ -7,13 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "SCAppcastFile.h"
 
 @interface SCAppcastSettingsPopoverViewController : NSViewController
 
+@property (strong) IBOutlet NSObjectController *appcastFileController;
+
 @property (weak) IBOutlet NSTextField *appcastTitleField;
-@property (weak) IBOutlet NSTextField *appcastLanguageField;
 @property (weak) IBOutlet NSTextField *appcastLinkField;
 @property (weak) IBOutlet NSTextField *appcastDescriptionField;
-
+@property (weak) IBOutlet NSPopUpButton *languagePopup;
 
 @end

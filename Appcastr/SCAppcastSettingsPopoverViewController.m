@@ -10,14 +10,19 @@
 
 @implementation SCAppcastSettingsPopoverViewController
 
-@synthesize appcastTitleField, appcastLanguageField, appcastLinkField, appcastDescriptionField;
+@synthesize appcastTitleField, appcastLinkField, appcastDescriptionField, languagePopup, appcastFileController;
 
 - (void)awakeFromNib{
+    NSArray *systemLanguages = [NSLocale ISOLanguageCodes];
+    [self.languagePopup removeAllItems];
+    [self.languagePopup addItemsWithTitles:systemLanguages];
+    [self.languagePopup selectItemWithTitle:[(SCAppcastFile *)self.representedObject appcastLanguage]];    
+    
     if([[[NSDocumentController sharedDocumentController] currentDocument] isInViewingMode]){
         [self.appcastDescriptionField setEditable:NO];
-        [self.appcastLanguageField setEditable:NO];
         [self.appcastLinkField setEditable:NO];
         [self.appcastTitleField setEditable:NO];
+        [self.languagePopup setEnabled:NO];
     }
 }
 
