@@ -27,6 +27,7 @@
 @property (weak) IBOutlet NSTextField *updateSignatureField;
 @property (weak) IBOutlet NSTextField *updateSizeField;
 @property (weak) IBOutlet NSDatePicker *updatePublicationDatePicker;
+@property (weak) IBOutlet NSComboBox *minimumVersionBox;
 
 - (IBAction)createNewUpdate:(id)sender;
 - (IBAction)deleteOldUpdate:(id)sender;

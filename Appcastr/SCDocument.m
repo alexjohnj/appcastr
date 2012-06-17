@@ -9,6 +9,7 @@
 #import "SCDocument.h"
 
 @implementation SCDocument
+@synthesize minimumVersionBox;
 @synthesize updateTitleField, updateBuildNumberField, updateVersionNumberField, updateDownloadLinkField, updateReleaseNotesDownloadLinkField, updateSignatureField, updateSizeField, updatePublicationDatePicker, sideBarTable;
 @synthesize appcastFile = _appcastFile, appcastUpdatesArrayController;
 
@@ -40,6 +41,9 @@
     if ([self isInViewingMode]) { // this body of code is used to configure the old windows being shown in the versions browser
         [self makeUserInterfaceInteractive:NO forDocument:(SCDocument *)[aController document]]; // it just makes sure that you can't edit their contents
     }
+
+NSArray *comboArray = [NSArray arrayWithObjects:@"10.6.0", @"10.6.1", @"10.6.2", @"10.6.3", nil];
+[self.minimumVersionBox addItemsWithObjectValues:comboArray];
 }
 
 #pragma mark - Data Saving/Loading
