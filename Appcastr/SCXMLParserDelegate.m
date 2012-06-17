@@ -75,6 +75,16 @@
     
     if([self.currentElement isEqualToString:@"pubDate"] && self.isItemElement)
         self.currentAppcastItem.updatePublicationDate = [NSDate dateWithNaturalLanguageString:string];
+    
+    if([self.currentElement isEqualToString:@"sparkle:minimumSystemVersion"] && self.isItemElement){
+        self.currentAppcastItem.updateSpecifiesMinimumSystemVersion = YES;
+        self.currentAppcastItem.updateMinimumSystemVersion = [[NSString alloc] initWithString:string];
+    }
+    
+    if([self.currentElement isEqualToString:@"sparkle:maximumSystemVersion"] && self.isItemElement){
+        self.currentAppcastItem.updateSpecifiesMaximumSystemVersion = YES;
+        self.currentAppcastItem.updateMaximumSystemVersion = [[NSString alloc] initWithString:string];
+    }
 }
 
 #pragma mark - Non Delegate Methods

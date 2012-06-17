@@ -10,7 +10,7 @@
 
 @implementation SCAppcastItem
 
-@synthesize updateBuildNumber, updateTitle, updateSignature, updateDownloadLink, updateReleaseNotesLink, updateLength, updateMimeType, updatePublicationDate, updateHumanReadableVersionNumber;
+@synthesize updateBuildNumber, updateTitle, updateSignature, updateDownloadLink, updateReleaseNotesLink, updateLength, updateMimeType, updatePublicationDate, updateHumanReadableVersionNumber, updateMaximumSystemVersion, updateMinimumSystemVersion, updateSpecifiesMaximumSystemVersion, updateSpecifiesMinimumSystemVersion;
 
 - (id)init{
     self = [super init];
@@ -25,6 +25,10 @@
         updateMimeType = [[NSString alloc] init];
         updatePublicationDate = [[NSDate alloc] init];
         updateHumanReadableVersionNumber = [[NSString alloc] init];
+        updateMinimumSystemVersion = [[NSString alloc] init];
+        updateMaximumSystemVersion = [[NSString alloc] init];
+        updateSpecifiesMaximumSystemVersion = NO;
+        updateSpecifiesMinimumSystemVersion = NO;
     }
     
     return self;

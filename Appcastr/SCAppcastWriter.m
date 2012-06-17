@@ -82,6 +82,7 @@
 }
 
 - (NSXMLElement *)buildItemElementFromAppcastData:(SCAppcastItem *)appcastItem{
+    
     NSXMLElement *channelItem = [[NSXMLElement alloc] initWithName:@"item"];
     
     // Create the channelItem's children
@@ -103,6 +104,16 @@
     if(appcastItem.updateReleaseNotesLink){
         NSXMLElement *itemReleaseNotesLink = [[NSXMLElement alloc] initWithName:@"sparkle:releaseNotesLink" stringValue:appcastItem.updateReleaseNotesLink];
         [channelItem addChild:itemReleaseNotesLink];
+    }
+    
+    if(appcastItem.updateSpecifiesMaximumSystemVersion && appcastItem.updateMaximumSystemVersion){
+        NSXMLElement *itemsMaximumSystemVersion = [[NSXMLElement alloc] initWithName:@"sparkle:maximumSystemVersion" stringValue:appcastItem.updateMaximumSystemVersion];
+        [channelItem addChild:itemsMaximumSystemVersion];
+    }
+    
+    if(appcastItem.updateSpecifiesMinimumSystemVersion && appcastItem.updateMinimumSystemVersion){
+        NSXMLElement *itemsMinimumSystemVersion = [[NSXMLElement alloc] initWithName:@"sparkle:minimumSystemVersion" stringValue:appcastItem.updateMinimumSystemVersion];
+        [channelItem addChild:itemsMinimumSystemVersion];
     }
     
     NSXMLElement *itemEnclosure = [[NSXMLElement alloc] initWithName:@"enclosure"];

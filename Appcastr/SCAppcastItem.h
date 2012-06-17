@@ -19,5 +19,9 @@
 @property (strong) NSString *updateLength;
 @property (strong) NSString *updateMimeType;
 @property (strong) NSDate *updatePublicationDate;
+@property (strong) NSString *updateMinimumSystemVersion;
+@property (strong) NSString *updateMaximumSystemVersion;
+@property (assign) BOOL updateSpecifiesMinimumSystemVersion;
+@property (assign) BOOL updateSpecifiesMaximumSystemVersion;
 
 @end

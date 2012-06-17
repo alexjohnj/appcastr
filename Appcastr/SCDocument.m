@@ -179,6 +179,10 @@
     [model addObserver:self forKeyPath:@"updateLength" options:NSKeyValueObservingOptionOld context:NULL];
     [model addObserver:self forKeyPath:@"updateMimeType" options:NSKeyValueObservingOptionOld context:NULL];
     [model addObserver:self forKeyPath:@"updatePublicationDate" options:NSKeyValueObservingOptionOld context:NULL];
+    [model addObserver:self forKeyPath:@"updateMinimumSystemVersion" options:NSKeyValueObservingOptionOld context:NULL];
+    [model addObserver:self forKeyPath:@"updateMaximumSystemVersion" options:NSKeyValueObservingOptionOld context:NULL];
+    [model addObserver:self forKeyPath:@"updateSpecifiesMinimumSystemVersion" options:NSKeyValueObservingOptionOld context:NULL];
+    [model addObserver:self forKeyPath:@"updateSpecifiesMaximumSystemVersion" options:NSKeyValueObservingOptionOld context:NULL];
 }
 
 - (void)stopObservingUpdateInformation:(SCAppcastItem *)model{
@@ -191,6 +195,10 @@
     [model removeObserver:self forKeyPath:@"updateLength"];
     [model removeObserver:self forKeyPath:@"updateMimeType"];
     [model removeObserver:self forKeyPath:@"updatePublicationDate"];
+    [model removeObserver:self forKeyPath:@"updateMinimumSystemVersion"];
+    [model removeObserver:self forKeyPath:@"updateMaximumSystemVersion"];
+    [model removeObserver:self forKeyPath:@"updateSpecifiesMinimumSystemVersion"];
+    [model removeObserver:self forKeyPath:@"updateSpecifiesMaximumSystemVersion"];
 }
 
 -(void)changeKeyPath:(NSString *)keyPath ofObject:(id)obj toValue:(id)newValue{
