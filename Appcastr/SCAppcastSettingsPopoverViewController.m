@@ -10,6 +10,15 @@
 
 @implementation SCAppcastSettingsPopoverViewController
 
-// 42
+@synthesize appcastTitleField, appcastLanguageField, appcastLinkField, appcastDescriptionField;
+
+- (void)awakeFromNib{
+    if([[[NSDocumentController sharedDocumentController] currentDocument] isInViewingMode]){
+        [self.appcastDescriptionField setEditable:NO];
+        [self.appcastLanguageField setEditable:NO];
+        [self.appcastLinkField setEditable:NO];
+        [self.appcastTitleField setEditable:NO];
+    }
+}
 
 @end

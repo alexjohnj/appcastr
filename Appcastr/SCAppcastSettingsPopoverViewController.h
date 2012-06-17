@@ -10,4 +10,10 @@
 
 @interface SCAppcastSettingsPopoverViewController : NSViewController
 
+@property (weak) IBOutlet NSTextField *appcastTitleField;
+@property (weak) IBOutlet NSTextField *appcastLanguageField;
+@property (weak) IBOutlet NSTextField *appcastLinkField;
+@property (weak) IBOutlet NSTextField *appcastDescriptionField;
+
+
 @end
