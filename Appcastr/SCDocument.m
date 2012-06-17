@@ -63,11 +63,7 @@
     return appcastFileDataRepresentation;
 }
 
-- (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
-    for(SCAppcastItem *item in self.appcastFile.items){ // we remove all the observers here because this method is called when restoring from a previous version before dealloc is called, so we'd end up deallocing objects that are still being observed if we don't remove the observers here. 
-        [self stopObservingUpdateInformation:item];
-    }
-    
+- (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{    
     NSXMLDocument *appcastXMLDocument = [[NSXMLDocument alloc] initWithContentsOfURL:url 
                                                                              options:NSXMLDocumentTidyXML error:nil];
     NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:[appcastXMLDocument XMLData]];
@@ -85,12 +81,16 @@
     
     else{
         self.appcastFile = xmlParserDelegate.appcastFileRepresentation;
-        for(SCAppcastItem *item in self.appcastFile.items){
-            [self startObservingUpdateInformation:item];
-        }
+        [self startObservingAppcastFile:self.appcastFile];
         return YES;
     }
 }
+
+- (BOOL)revertToContentsOfURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError{
+    [self stopObservingAppcastFile:self.appcastFile];
+    
+    return [super revertToContentsOfURL:url ofType:typeName error:outError];
+} 
 
 - (void)makeUserInterfaceInteractive:(BOOL)editable forDocument:(SCDocument *)document{
     if(document.isInViewingMode){
@@ -139,7 +139,40 @@
     [self.appcastUpdatesArrayController removeObjectAtArrangedObjectIndex:self.appcastUpdatesArrayController.selectionIndex];
 }
 
+# pragma mark - Appcast Settings Popover
+
+- (IBAction)showAppcastSettingsPopover:(id)sender{
+    NSPopover *pops = [[NSPopover alloc] init];
+    pops.contentViewController = [[SCAppcastSettingsPopoverViewController alloc] initWithNibName:@"SCAppcastSettingsPopoverView" 
+                                                                                          bundle:nil];
+    pops.contentViewController.representedObject = self.appcastFile;
+    pops.behavior = NSPopoverBehaviorTransient;
+    
+    [pops showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinYEdge];
+}
+
 #pragma mark - Undo Methods
+- (void)startObservingAppcastFile:(SCAppcastFile *)file{
+    [file addObserver:self forKeyPath:@"appcastTitle" options:NSKeyValueObservingOptionOld context:NULL];
+    [file addObserver:self forKeyPath:@"appcastLanguage" options:NSKeyValueObservingOptionOld context:NULL];
+    [file addObserver:self forKeyPath:@"appcastLink" options:NSKeyValueObservingOptionOld context:NULL];
+    [file addObserver:self forKeyPath:@"appcastDescription" options:NSKeyValueObservingOptionOld context:NULL];
+    
+    for(SCAppcastItem *update in file.items){
+        [self startObservingUpdateInformation:update];
+    }
+}
+
+- (void)stopObservingAppcastFile:(SCAppcastFile *)file{
+    [file removeObserver:self forKeyPath:@"appcastTitle"];
+    [file removeObserver:self forKeyPath:@"appcastLanguage"];
+    [file removeObserver:self forKeyPath:@"appcastLink"];
+    [file removeObserver:self forKeyPath:@"appcastDescription"];
+    
+    for(SCAppcastItem *update in file.items){
+        [self stopObservingUpdateInformation:update];
+    }
+}
 
 - (void)startObservingUpdateInformation:(SCAppcastItem *)model{ 
     [model addObserver:self forKeyPath:@"updateBuildNumber" options:NSKeyValueObservingOptionOld context:NULL];
@@ -169,7 +202,7 @@
     [obj setValue:newValue forKeyPath:keyPath];
 }
 
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{    
     NSUndoManager *undo = [self undoManager];
     id oldValue = [change objectForKey:NSKeyValueChangeOldKey];
     [[undo prepareWithInvocationTarget:self] changeKeyPath:keyPath ofObject:object toValue:oldValue];
@@ -178,9 +211,7 @@
 
 - (void)dealloc{
     NSLog(@"Dealloc called");
-    for(SCAppcastItem *item in self.appcastFile.items){
-        [self stopObservingUpdateInformation:item];
-    }
+    [self stopObservingAppcastFile:self.appcastFile];
 }
 
 @end

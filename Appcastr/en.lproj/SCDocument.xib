@@ -890,6 +890,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<int key="connectionID">103188</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showAppcastSettingsPopover:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="510869396"/>
+					</object>
+					<int key="connectionID">103189</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="275939982"/>
@@ -3409,7 +3417,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">103188</int>
+			<int key="maxID">103189</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3427,6 +3435,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="createNewUpdate:">id</string>
 						<string key="deleteOldUpdate:">id</string>
+						<string key="showAppcastSettingsPopover:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="createNewUpdate:">
@@ -3437,13 +3446,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 							<string key="name">deleteOldUpdate:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="showAppcastSettingsPopover:">
+							<string key="name">showAppcastSettingsPopover:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="appcastDescriptionField">NSTextField</string>
 						<string key="appcastLanguageField">NSTextField</string>
 						<string key="appcastLinkField">NSTextField</string>
 						<string key="appcastNameField">NSTextField</string>
-						<string key="appcastSettingsBox">NSBox</string>
 						<string key="appcastUpdatesArrayController">NSArrayController</string>
 						<string key="sideBarTable">NSTableView</string>
 						<string key="updateBuildNumberField">NSTextField</string>
@@ -3471,10 +3483,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<object class="IBToOneOutletInfo" key="appcastNameField">
 							<string key="name">appcastNameField</string>
 							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="appcastSettingsBox">
-							<string key="name">appcastSettingsBox</string>
-							<string key="candidateClassName">NSBox</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="appcastUpdatesArrayController">
 							<string key="name">appcastUpdatesArrayController</string>

@@ -10,6 +10,7 @@
 #import "SCXMLParserDelegate.h"
 #import "SCAppcastWriter.h"
 #import "SCAppcastFile.h"
+#import "SCAppcastSettingsPopoverViewController.h"
 
 @interface SCDocument : NSDocument <NSWindowDelegate>
 
@@ -34,6 +35,10 @@
 - (IBAction)createNewUpdate:(id)sender;
 - (IBAction)deleteOldUpdate:(id)sender;
 
+- (IBAction)showAppcastSettingsPopover:(id)sender;
+
+- (void)startObservingAppcastFile:(SCAppcastFile *)file;
+- (void)stopObservingAppcastFile:(SCAppcastFile *)file;
 - (void)startObservingUpdateInformation:(SCAppcastItem *)model;
 - (void)stopObservingUpdateInformation:(SCAppcastItem *)model;
 
