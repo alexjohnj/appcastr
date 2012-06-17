@@ -84,6 +84,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA3E9BCE158DE85900A7E5C8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA9B4C1C1580E02200599590 /* SCAppcastModel.h */,
+				FA9B4C1D1580E02200599590 /* SCAppcastModel.m */,
+				FAF2EC5F1588C85B00612324 /* SCAppcastItem.h */,
+				FAF2EC601588C85B00612324 /* SCAppcastItem.m */,
+				FAF2EC5B1588C85200612324 /* SCAppcastFile.h */,
+				FAF2EC5C1588C85200612324 /* SCAppcastFile.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		FA3E9BCF158DE86200A7E5C8 /* XML Parsing/Writing */ = {
+			isa = PBXGroup;
+			children = (
+				FA31D0A21580F3F200B1F665 /* SCAppcastWriter.h */,
+				FA31D0A31580F3F200B1F665 /* SCAppcastWriter.m */,
+				FA9B4C1F1580E0AA00599590 /* SCXMLParserDelegate.h */,
+				FA9B4C201580E0AA00599590 /* SCXMLParserDelegate.m */,
+			);
+			name = "XML Parsing/Writing";
+			sourceTree = "<group>";
+		};
+		FA3E9BD0158DE87300A7E5C8 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				FA9E45B9158908F0002DFC2C /* SCNSSplitViewDelegate.h */,
+				FA9E45BA158908F0002DFC2C /* SCNSSplitViewDelegate.m */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		FA3E9BD1158DE88200A7E5C8 /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				FA9B4C041580DAC800599590 /* SCDocument.xib */,
+				FA9B4C071580DAC800599590 /* MainMenu.xib */,
+			);
+			name = Nibs;
+			sourceTree = "<group>";
+		};
 		FA9B4BE01580DAC700599590 = {
 			isa = PBXGroup;
 			children = (
@@ -124,22 +166,12 @@
 		FA9B4BF51580DAC800599590 /* Appcastr */ = {
 			isa = PBXGroup;
 			children = (
-				FAF2EC5F1588C85B00612324 /* SCAppcastItem.h */,
-				FAF2EC601588C85B00612324 /* SCAppcastItem.m */,
-				FAF2EC5B1588C85200612324 /* SCAppcastFile.h */,
-				FAF2EC5C1588C85200612324 /* SCAppcastFile.m */,
-				FA31D0A21580F3F200B1F665 /* SCAppcastWriter.h */,
-				FA31D0A31580F3F200B1F665 /* SCAppcastWriter.m */,
-				FA9B4C1F1580E0AA00599590 /* SCXMLParserDelegate.h */,
-				FA9B4C201580E0AA00599590 /* SCXMLParserDelegate.m */,
-				FA9B4C1C1580E02200599590 /* SCAppcastModel.h */,
-				FA9B4C1D1580E02200599590 /* SCAppcastModel.m */,
 				FA9B4C011580DAC800599590 /* SCDocument.h */,
 				FA9B4C021580DAC800599590 /* SCDocument.m */,
-				FA9B4C041580DAC800599590 /* SCDocument.xib */,
-				FA9B4C071580DAC800599590 /* MainMenu.xib */,
-				FA9E45B9158908F0002DFC2C /* SCNSSplitViewDelegate.h */,
-				FA9E45BA158908F0002DFC2C /* SCNSSplitViewDelegate.m */,
+				FA3E9BD0158DE87300A7E5C8 /* Delegates */,
+				FA3E9BCE158DE85900A7E5C8 /* Models */,
+				FA3E9BCF158DE86200A7E5C8 /* XML Parsing/Writing */,
+				FA3E9BD1158DE88200A7E5C8 /* Nibs */,
 				FA9B4BF61580DAC800599590 /* Supporting Files */,
 			);
 			path = Appcastr;
