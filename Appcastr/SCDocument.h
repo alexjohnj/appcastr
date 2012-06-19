@@ -11,6 +11,7 @@
 #import "SCAppcastWriter.h"
 #import "SCAppcastFile.h"
 #import "SCAppcastSettingsPopoverViewController.h"
+#import "SCAdvancedUpdateInformationSheetController.h"
 
 @interface SCDocument : NSDocument <NSWindowDelegate>
 
@@ -29,6 +30,9 @@
 @property (weak) IBOutlet NSDatePicker *updatePublicationDatePicker;
 @property (weak) IBOutlet NSComboBox *minimumVersionBox;
 
+@property (strong) SCAdvancedUpdateInformationSheetController *advancedUpdateSettingsSheet;
+- (IBAction)showAdvancedUpdateSettingsSheet:(id)sender;
+
 - (IBAction)createNewUpdate:(id)sender;
 - (IBAction)deleteOldUpdate:(id)sender;
 
@@ -38,5 +42,7 @@
 - (void)stopObservingAppcastFile:(SCAppcastFile *)file;
 - (void)startObservingUpdateInformation:(SCAppcastItem *)model;
 - (void)stopObservingUpdateInformation:(SCAppcastItem *)model;
+
+- (void)sheetDidEnd:(NSWindow *)sheet resultCode:(NSInteger)resultCode contextInfo:(void *)contextInfo;
 
 @end

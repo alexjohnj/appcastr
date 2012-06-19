@@ -12,6 +12,7 @@
 @synthesize minimumVersionBox;
 @synthesize updateTitleField, updateBuildNumberField, updateVersionNumberField, updateDownloadLinkField, updateReleaseNotesDownloadLinkField, updateSignatureField, updateSizeField, updatePublicationDatePicker, sideBarTable;
 @synthesize appcastFile = _appcastFile, appcastUpdatesArrayController;
+@synthesize advancedUpdateSettingsSheet = _advancedUpdateSettingsSheet;
 
 - (id)init
 {
@@ -41,9 +42,9 @@
     if ([self isInViewingMode]) { // this body of code is used to configure the old windows being shown in the versions browser
         [self makeUserInterfaceInteractive:NO forDocument:(SCDocument *)[aController document]]; // it just makes sure that you can't edit their contents
     }
-
-NSArray *comboArray = [NSArray arrayWithObjects:@"10.6.0", @"10.6.1", @"10.6.2", @"10.6.3", nil];
-[self.minimumVersionBox addItemsWithObjectValues:comboArray];
+    
+    NSArray *comboArray = [NSArray arrayWithObjects:@"10.6.0", @"10.6.1", @"10.6.2", @"10.6.3", nil];
+    [self.minimumVersionBox addItemsWithObjectValues:comboArray];
 }
 
 #pragma mark - Data Saving/Loading
@@ -138,7 +139,7 @@ NSArray *comboArray = [NSArray arrayWithObjects:@"10.6.0", @"10.6.1", @"10.6.2",
     [self.appcastUpdatesArrayController removeObjectAtArrangedObjectIndex:self.appcastUpdatesArrayController.selectionIndex];
 }
 
-# pragma mark - Appcast Settings Popover
+# pragma mark - UI Actions
 
 - (IBAction)showAppcastSettingsPopover:(id)sender{
     NSPopover *pops = [[NSPopover alloc] init];
@@ -148,6 +149,20 @@ NSArray *comboArray = [NSArray arrayWithObjects:@"10.6.0", @"10.6.1", @"10.6.2",
     pops.behavior = NSPopoverBehaviorTransient;
     
     [pops showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinYEdge];
+}
+
+- (IBAction)showAdvancedUpdateSettingsSheet:(id)sender{
+    if(_advancedUpdateSettingsSheet)
+        _advancedUpdateSettingsSheet = nil;
+    
+    SCAppcastItem *currentlySelectedItem = self.appcastUpdatesArrayController.selection;
+    _advancedUpdateSettingsSheet = [[SCAdvancedUpdateInformationSheetController alloc] initWithWindowNibName:@"SCAdvancedUpdateInformationSheet"
+                                                                                             appcastUpdate:currentlySelectedItem];
+    [NSApp beginSheet:self.advancedUpdateSettingsSheet.window
+       modalForWindow:[self windowForSheet]
+        modalDelegate:self
+       didEndSelector:@selector(sheetDidEnd:resultCode:contextInfo:)
+          contextInfo:NULL];
 }
 
 #pragma mark - Undo Methods
@@ -217,8 +232,14 @@ NSArray *comboArray = [NSArray arrayWithObjects:@"10.6.0", @"10.6.1", @"10.6.2",
 }
 
 - (void)dealloc{
-    NSLog(@"Dealloc called");
     [self stopObservingAppcastFile:self.appcastFile];
+} 
+
+- (void)sheetDidEnd:(NSWindow *)sheet resultCode:(NSInteger)resultCode contextInfo:(void *)contextInfo {
+    if(sheet == self.advancedUpdateSettingsSheet.window){
+        [sheet orderOut:self];
+        self.advancedUpdateSettingsSheet = nil;
+    }
 }
 
 @end

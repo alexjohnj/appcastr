@@ -24,6 +24,8 @@
 		FA9B4C1E1580E02200599590 /* SCAppcastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4C1D1580E02200599590 /* SCAppcastModel.m */; };
 		FA9B4C211580E0AA00599590 /* SCXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4C201580E0AA00599590 /* SCXMLParserDelegate.m */; };
 		FA9E45BB158908F0002DFC2C /* SCNSSplitViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9E45BA158908F0002DFC2C /* SCNSSplitViewDelegate.m */; };
+		FAEF3A691590F63D006820E2 /* SCAdvancedUpdateInformationSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEF3A671590F63D006820E2 /* SCAdvancedUpdateInformationSheetController.m */; };
+		FAEF3A6A1590F63D006820E2 /* SCAdvancedUpdateInformationSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEF3A681590F63D006820E2 /* SCAdvancedUpdateInformationSheet.xib */; };
 		FAF2EC5D1588C85200612324 /* SCAppcastFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2EC5C1588C85200612324 /* SCAppcastFile.m */; };
 		FAF2EC611588C85B00612324 /* SCAppcastItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2EC601588C85B00612324 /* SCAppcastItem.m */; };
 /* End PBXBuildFile section */
@@ -70,6 +72,9 @@
 		FA9B4C201580E0AA00599590 /* SCXMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCXMLParserDelegate.m; sourceTree = "<group>"; };
 		FA9E45B9158908F0002DFC2C /* SCNSSplitViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNSSplitViewDelegate.h; sourceTree = "<group>"; };
 		FA9E45BA158908F0002DFC2C /* SCNSSplitViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNSSplitViewDelegate.m; sourceTree = "<group>"; };
+		FAEF3A661590F63D006820E2 /* SCAdvancedUpdateInformationSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SCAdvancedUpdateInformationSheetController.h; sourceTree = "<group>"; };
+		FAEF3A671590F63D006820E2 /* SCAdvancedUpdateInformationSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAdvancedUpdateInformationSheetController.m; sourceTree = "<group>"; };
+		FAEF3A681590F63D006820E2 /* SCAdvancedUpdateInformationSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCAdvancedUpdateInformationSheet.xib; sourceTree = "<group>"; };
 		FAF2EC5B1588C85200612324 /* SCAppcastFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAppcastFile.h; sourceTree = "<group>"; };
 		FAF2EC5C1588C85200612324 /* SCAppcastFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAppcastFile.m; sourceTree = "<group>"; };
 		FAF2EC5F1588C85B00612324 /* SCAppcastItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAppcastItem.h; sourceTree = "<group>"; };
@@ -134,9 +139,10 @@
 		FA3E9BD1158DE88200A7E5C8 /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
+				FA9B4C071580DAC800599590 /* MainMenu.xib */,
 				FA9B4C041580DAC800599590 /* SCDocument.xib */,
 				FA3E9BD4158DE8C500A7E5C8 /* SCAppcastSettingsPopoverView.xib */,
-				FA9B4C071580DAC800599590 /* MainMenu.xib */,
+				FAEF3A681590F63D006820E2 /* SCAdvancedUpdateInformationSheet.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -181,6 +187,7 @@
 		FA9B4BF51580DAC800599590 /* Appcastr */ = {
 			isa = PBXGroup;
 			children = (
+				FAE78BE5159101320026238E /* Window Controllers */,
 				FA9B4C011580DAC800599590 /* SCDocument.h */,
 				FA9B4C021580DAC800599590 /* SCDocument.m */,
 				FA3E9BD0158DE87300A7E5C8 /* Delegates */,
@@ -205,6 +212,15 @@
 				FA9B4BFE1580DAC800599590 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FAE78BE5159101320026238E /* Window Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FAEF3A661590F63D006820E2 /* SCAdvancedUpdateInformationSheetController.h */,
+				FAEF3A671590F63D006820E2 /* SCAdvancedUpdateInformationSheetController.m */,
+			);
+			name = "Window Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +282,7 @@
 				FA0AF3C815851D9A00510080 /* dsa_pub.pem in Resources */,
 				FA0AF3CC158521AD00510080 /* icon.icns in Resources */,
 				FA3E9BD6158DE8C500A7E5C8 /* SCAppcastSettingsPopoverView.xib in Resources */,
+				FAEF3A6A1590F63D006820E2 /* SCAdvancedUpdateInformationSheet.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +302,7 @@
 				FAF2EC611588C85B00612324 /* SCAppcastItem.m in Sources */,
 				FA9E45BB158908F0002DFC2C /* SCNSSplitViewDelegate.m in Sources */,
 				FA3E9BD5158DE8C500A7E5C8 /* SCAppcastSettingsPopoverViewController.m in Sources */,
+				FAEF3A691590F63D006820E2 /* SCAdvancedUpdateInformationSheetController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
