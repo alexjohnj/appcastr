@@ -72,7 +72,7 @@
 		FA9B4C201580E0AA00599590 /* SCXMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCXMLParserDelegate.m; sourceTree = "<group>"; };
 		FA9E45B9158908F0002DFC2C /* SCNSSplitViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNSSplitViewDelegate.h; sourceTree = "<group>"; };
 		FA9E45BA158908F0002DFC2C /* SCNSSplitViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNSSplitViewDelegate.m; sourceTree = "<group>"; };
-		FAEF3A661590F63D006820E2 /* SCAdvancedUpdateInformationSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SCAdvancedUpdateInformationSheetController.h; sourceTree = "<group>"; };
+		FAEF3A661590F63D006820E2 /* SCAdvancedUpdateInformationSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAdvancedUpdateInformationSheetController.h; sourceTree = "<group>"; };
 		FAEF3A671590F63D006820E2 /* SCAdvancedUpdateInformationSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAdvancedUpdateInformationSheetController.m; sourceTree = "<group>"; };
 		FAEF3A681590F63D006820E2 /* SCAdvancedUpdateInformationSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCAdvancedUpdateInformationSheet.xib; sourceTree = "<group>"; };
 		FAF2EC5B1588C85200612324 /* SCAppcastFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAppcastFile.h; sourceTree = "<group>"; };
