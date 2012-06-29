@@ -20,9 +20,7 @@
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedCoordinate ofSubviewAt:(NSInteger)index
 {
-    NSWindow *currentWindow = [[[NSDocumentController sharedDocumentController] currentDocument] windowForSheet];
-    NSRect windowFrame = currentWindow.frame;
-	return windowFrame.size.width * 0.2;
+	return kMaxSplitView;
 }
 
 - (BOOL)splitView:(NSSplitView *)splitView shouldAdjustSizeOfSubview:(NSView *)subview{
