@@ -19,9 +19,9 @@
     NSArray *itemsArray = [appcastFile.items sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         SCAppcastItem *update1 = (SCAppcastItem *)obj1;
         SCAppcastItem *update2 = (SCAppcastItem *)obj2;
-        if([update1.updateBuildNumber intValue] > [update2.updateBuildNumber intValue])
+        if([update1.updateBuildNumber floatValue] > [update2.updateBuildNumber floatValue])
             return NSOrderedAscending;
-        else if([update1.updateBuildNumber intValue] < [update2.updateBuildNumber intValue])
+        else if([update1.updateBuildNumber floatValue] < [update2.updateBuildNumber floatValue])
             return NSOrderedDescending;
         else
             return NSOrderedSame;

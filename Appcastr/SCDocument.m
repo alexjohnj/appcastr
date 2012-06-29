@@ -15,6 +15,8 @@
 @synthesize advancedUpdateSettingsSheet = _advancedUpdateSettingsSheet;
 @synthesize sortDescriptors = _sortDescriptors;
 
+#pragma mark -
+
 - (id)init
 {
     self = [super init];
@@ -23,9 +25,9 @@
         _sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"updateBuildNumber"
                                                                                   ascending:NO
                                                                                  comparator:^NSComparisonResult(id obj1, id obj2) {
-                                                                                     if([obj1 intValue] > [obj2 intValue])
+                                                                                     if([obj1 floatValue] > [obj2 floatValue])
                                                                                          return NSOrderedDescending;
-                                                                                     else if([obj1 intValue] < [obj2 intValue])
+                                                                                     else if([obj1 floatValue] < [obj2 floatValue])
                                                                                          return NSOrderedAscending;
                                                                                      else
                                                                                          return NSOrderedSame;
