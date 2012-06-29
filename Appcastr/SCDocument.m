@@ -13,12 +13,23 @@
 @synthesize updateTitleField, updateBuildNumberField, updateVersionNumberField, updateDownloadLinkField, updateReleaseNotesDownloadLinkField, updateSignatureField, updateSizeField, updatePublicationDatePicker, sideBarTable;
 @synthesize appcastFile = _appcastFile, appcastUpdatesArrayController;
 @synthesize advancedUpdateSettingsSheet = _advancedUpdateSettingsSheet;
+@synthesize sortDescriptors = _sortDescriptors;
 
 - (id)init
 {
     self = [super init];
     if (self) {
         _appcastFile = [[SCAppcastFile alloc] init];
+        _sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"updateBuildNumber"
+                                                                                  ascending:NO
+                                                                                 comparator:^NSComparisonResult(id obj1, id obj2) {
+                                                                                     if([obj1 intValue] > [obj2 intValue])
+                                                                                         return NSOrderedDescending;
+                                                                                     else if([obj1 intValue] < [obj2 intValue])
+                                                                                         return NSOrderedAscending;
+                                                                                     else
+                                                                                         return NSOrderedSame;
+                                                                                 }]];
     }
     return self;
 }
@@ -157,7 +168,7 @@
     
     SCAppcastItem *currentlySelectedItem = self.appcastUpdatesArrayController.selection;
     _advancedUpdateSettingsSheet = [[SCAdvancedUpdateInformationSheetController alloc] initWithWindowNibName:@"SCAdvancedUpdateInformationSheet"
-                                                                                             appcastUpdate:currentlySelectedItem];
+                                                                                               appcastUpdate:currentlySelectedItem];
     [NSApp beginSheet:self.advancedUpdateSettingsSheet.window
        modalForWindow:[self windowForSheet]
         modalDelegate:self

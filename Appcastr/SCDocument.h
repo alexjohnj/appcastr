@@ -17,6 +17,7 @@
 
 @property (strong) SCAppcastFile *appcastFile;
 @property (strong) IBOutlet NSArrayController *appcastUpdatesArrayController;
+@property (strong) NSArray *sortDescriptors;
 
 @property (weak) IBOutlet NSTableView *sideBarTable;
 

@@ -15,8 +15,20 @@
     NSXMLElement *rootElement = [self buildRootElement];
     NSXMLElement *channelElement = [self buildChannelElementFromAppcastData:appcastFile];
     
-    for(int i = 0; i < appcastFile.items.count; i++){
-        [channelElement addChild:[self buildItemElementFromAppcastData:[appcastFile.items objectAtIndex:i]]];
+    
+    NSArray *itemsArray = [appcastFile.items sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        SCAppcastItem *update1 = (SCAppcastItem *)obj1;
+        SCAppcastItem *update2 = (SCAppcastItem *)obj2;
+        if([update1.updateBuildNumber intValue] > [update2.updateBuildNumber intValue])
+            return NSOrderedAscending;
+        else if([update1.updateBuildNumber intValue] < [update2.updateBuildNumber intValue])
+            return NSOrderedDescending;
+        else
+            return NSOrderedSame;
+    }];
+    
+    for (SCAppcastItem *update in itemsArray){
+        [channelElement addChild:[self buildItemElementFromAppcastData:update]];
     }
     
     [rootElement addChild:channelElement];
