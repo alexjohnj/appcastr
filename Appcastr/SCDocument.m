@@ -16,6 +16,11 @@
 @synthesize advancedUpdateSettingsSheet = _advancedUpdateSettingsSheet;
 @synthesize sortDescriptors = _sortDescriptors;
 
+//+ (void)initialize{
+//    NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
+//    [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
+//}
+
 #pragma mark -
 
 - (id)init
