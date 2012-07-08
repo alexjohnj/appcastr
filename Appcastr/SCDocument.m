@@ -9,6 +9,7 @@
 #import "SCDocument.h"
 
 @implementation SCDocument
+@synthesize splitView;
 @synthesize minimumVersionBox;
 @synthesize updateTitleField, updateBuildNumberField, updateVersionNumberField, updateDownloadLinkField, updateReleaseNotesDownloadLinkField, updateSignatureField, updateSizeField, updatePublicationDatePicker, sideBarTable;
 @synthesize appcastFile = _appcastFile, appcastUpdatesArrayController;
@@ -136,9 +137,19 @@
 #pragma mark - Window Restoration
 
 - (void)window:(NSWindow *)window willEncodeRestorableState:(NSCoder *)state{
+    NSRect leftFrame = [[self.splitView.subviews objectAtIndex:0] frame];
+    NSRect rightFrame = [[self.splitView.subviews objectAtIndex:0] frame];
+    
+    [state encodeRect:leftFrame forKey:@"leftFrame"];
+    [state encodeRect:rightFrame forKey:@"rightFrame"];
 }
 
 - (void)window:(NSWindow *)window didDecodeRestorableState:(NSCoder *)state{
+    NSRect leftFrame = [state decodeRectForKey:@"leftFrame"];
+    NSRect rightFrame = [state decodeRectForKey:@"rightFrame"];
+    
+    [[self.splitView.subviews objectAtIndex:0] setFrame:leftFrame];
+    [[self.splitView.subviews objectAtIndex:1] setFrame:rightFrame];
 }
 
 #pragma mark - Update Array Insertation Methods

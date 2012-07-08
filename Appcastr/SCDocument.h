@@ -20,6 +20,7 @@
 @property (strong) NSArray *sortDescriptors;
 
 @property (weak) IBOutlet NSTableView *sideBarTable;
+@property (weak) IBOutlet NSSplitView *splitView;
 
 @property (weak) IBOutlet NSTextField *updateTitleField;
 @property (weak) IBOutlet NSTextField *updateBuildNumberField;
