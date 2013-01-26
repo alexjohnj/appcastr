@@ -9,12 +9,6 @@
 #import "SCDocument.h"
 
 @implementation SCDocument
-@synthesize splitView;
-@synthesize minimumVersionBox;
-@synthesize updateTitleField, updateBuildNumberField, updateVersionNumberField, updateDownloadLinkField, updateReleaseNotesDownloadLinkField, updateSignatureField, updateSizeField, updatePublicationDatePicker, sideBarTable;
-@synthesize appcastFile = _appcastFile, appcastUpdatesArrayController;
-@synthesize advancedUpdateSettingsSheet = _advancedUpdateSettingsSheet;
-@synthesize sortDescriptors = _sortDescriptors;
 
 //+ (void)initialize{
 //    NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
@@ -28,7 +22,7 @@
     self = [super init];
     if (self) {
         _appcastFile = [[SCAppcastFile alloc] init];
-        _sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"updateBuildNumber"
+        _sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"updateBuildNumber"
                                                                                   ascending:NO
                                                                                  comparator:^NSComparisonResult(id obj1, id obj2) {
                                                                                      if([obj1 floatValue] > [obj2 floatValue])
@@ -62,7 +56,7 @@
         [self makeUserInterfaceInteractive:NO forDocument:(SCDocument *)[aController document]]; // it just makes sure that you can't edit their contents
     }
     
-    NSArray *comboArray = [NSArray arrayWithObjects:@"10.6.0", @"10.6.1", @"10.6.2", @"10.6.3", nil];
+    NSArray *comboArray = @[@"10.6.0", @"10.6.1", @"10.6.2", @"10.6.3"];
     [self.minimumVersionBox addItemsWithObjectValues:comboArray];
 }
 
@@ -142,8 +136,8 @@
 #pragma mark - Window Restoration
 
 - (void)window:(NSWindow *)window willEncodeRestorableState:(NSCoder *)state{
-    NSRect leftFrame = [[self.splitView.subviews objectAtIndex:0] frame];
-    NSRect rightFrame = [[self.splitView.subviews objectAtIndex:0] frame];
+    NSRect leftFrame = [(self.splitView.subviews)[0] frame];
+    NSRect rightFrame = [(self.splitView.subviews)[0] frame];
     
     [state encodeRect:leftFrame forKey:@"leftFrame"];
     [state encodeRect:rightFrame forKey:@"rightFrame"];
@@ -153,8 +147,8 @@
     NSRect leftFrame = [state decodeRectForKey:@"leftFrame"];
     NSRect rightFrame = [state decodeRectForKey:@"rightFrame"];
     
-    [[self.splitView.subviews objectAtIndex:0] setFrame:leftFrame];
-    [[self.splitView.subviews objectAtIndex:1] setFrame:rightFrame];
+    [(self.splitView.subviews)[0] setFrame:leftFrame];
+    [(self.splitView.subviews)[1] setFrame:rightFrame];
 }
 
 #pragma mark - Update Array Insertation Methods
@@ -181,11 +175,11 @@
 }
 
 - (IBAction)showAdvancedUpdateSettingsSheet:(id)sender{
-    if(_advancedUpdateSettingsSheet)
-        _advancedUpdateSettingsSheet = nil;
+    if(self.advancedUpdateSettingsSheet)
+        self.advancedUpdateSettingsSheet = nil;
     
     SCAppcastItem *currentlySelectedItem = self.appcastUpdatesArrayController.selection;
-    _advancedUpdateSettingsSheet = [[SCAdvancedUpdateInformationSheetController alloc] initWithWindowNibName:@"SCAdvancedUpdateInformationSheet"
+    self.advancedUpdateSettingsSheet = [[SCAdvancedUpdateInformationSheetController alloc] initWithWindowNibName:@"SCAdvancedUpdateInformationSheet"
                                                                                                appcastUpdate:currentlySelectedItem];
     [NSApp beginSheet:self.advancedUpdateSettingsSheet.window
        modalForWindow:[self windowForSheet]
@@ -255,7 +249,7 @@
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{    
     NSUndoManager *undo = [self undoManager];
-    id oldValue = [change objectForKey:NSKeyValueChangeOldKey];
+    id oldValue = change[NSKeyValueChangeOldKey];
     [[undo prepareWithInvocationTarget:self] changeKeyPath:keyPath ofObject:object toValue:oldValue];
     [undo setActionName:@"Edit"];
 }

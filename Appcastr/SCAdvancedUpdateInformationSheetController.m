@@ -9,8 +9,6 @@
 #import "SCAdvancedUpdateInformationSheetController.h"
 
 @implementation SCAdvancedUpdateInformationSheetController
-@synthesize currentlySelectedUpdate= _currentlySelectedUpdate, currentUpdateController = _currentUpdateController;
-@synthesize minimumUpdateField, minimumUpdateCheckbox, maximumUpdateField, maximumUpdateCheckbox;
 
 - (id)initWithWindowNibName:(NSString *)windowNibName appcastUpdate:(SCAppcastItem *)update{
     self = [super initWithWindowNibName:windowNibName];

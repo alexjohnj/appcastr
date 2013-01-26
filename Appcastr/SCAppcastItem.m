@@ -10,25 +10,23 @@
 
 @implementation SCAppcastItem
 
-@synthesize updateBuildNumber, updateTitle, updateSignature, updateDownloadLink, updateReleaseNotesLink, updateLength, updateMimeType, updatePublicationDate, updateHumanReadableVersionNumber, updateMaximumSystemVersion, updateMinimumSystemVersion, updateSpecifiesMaximumSystemVersion, updateSpecifiesMinimumSystemVersion;
-
 - (id)init{
     self = [super init];
     
     if(self){
-        updateBuildNumber = [[NSString alloc] init];
-        updateTitle = [[NSString alloc] init];
-        updateSignature = [[NSString alloc] init];
-        updateDownloadLink = [[NSString alloc] init];
-        updateReleaseNotesLink = [[NSString alloc] init];
-        updateLength = [[NSString alloc] init];
-        updateMimeType = [[NSString alloc] init];
-        updatePublicationDate = [[NSDate alloc] init];
-        updateHumanReadableVersionNumber = [[NSString alloc] init];
-        updateMinimumSystemVersion = [[NSString alloc] init];
-        updateMaximumSystemVersion = [[NSString alloc] init];
-        updateSpecifiesMaximumSystemVersion = NO;
-        updateSpecifiesMinimumSystemVersion = NO;
+        _updateBuildNumber = [[NSString alloc] init];
+        _updateTitle = [[NSString alloc] init];
+        _updateSignature = [[NSString alloc] init];
+        _updateDownloadLink = [[NSString alloc] init];
+        _updateReleaseNotesLink = [[NSString alloc] init];
+        _updateLength = [[NSString alloc] init];
+        _updateMimeType = [[NSString alloc] init];
+        _updatePublicationDate = [[NSDate alloc] init];
+        _updateHumanReadableVersionNumber = [[NSString alloc] init];
+        _updateMinimumSystemVersion = [[NSString alloc] init];
+        _updateMaximumSystemVersion = [[NSString alloc] init];
+        _updateSpecifiesMaximumSystemVersion = NO;
+        _updateSpecifiesMinimumSystemVersion = NO;
     }
     
     return self;

@@ -10,13 +10,11 @@
 
 @implementation SCXMLParserDelegate
 
-@synthesize currentAppcastItem, appcastFileRepresentation, isItemElement, currentElement, currentAttributes;
-
 -(id)init{
     self = [super init];
     if(self){
-        appcastFileRepresentation = [[SCAppcastFile alloc] init];
-        isItemElement = NO;
+        _appcastFileRepresentation = [[SCAppcastFile alloc] init];
+        _isItemElement = NO;
     }
     return self;
 }
@@ -35,7 +33,7 @@
     
     if([elementName isEqualToString:@"item"]){
         self.isItemElement = YES;
-        currentAppcastItem = [[SCAppcastItem alloc] init];
+        self.currentAppcastItem = [[SCAppcastItem alloc] init];
     }
     
     if([elementName isEqualToString:@"enclosure"]){
@@ -90,23 +88,23 @@
 #pragma mark - Non Delegate Methods
 
 - (void)extractUpdateInformationFromEnclosureAttributes:(NSDictionary *)attributeDict{
-    if([attributeDict objectForKey:@"url"])
-        self.currentAppcastItem.updateDownloadLink = [[NSString alloc] initWithString:[attributeDict objectForKey:@"url"]];
+    if(attributeDict[@"url"])
+        self.currentAppcastItem.updateDownloadLink = [[NSString alloc] initWithString:attributeDict[@"url"]];
     
-    if([attributeDict objectForKey:@"sparkle:version"])
-        self.currentAppcastItem.updateBuildNumber = [[NSString alloc] initWithString:[attributeDict objectForKey:@"sparkle:version"]];
+    if(attributeDict[@"sparkle:version"])
+        self.currentAppcastItem.updateBuildNumber = [[NSString alloc] initWithString:attributeDict[@"sparkle:version"]];
     
-    if([attributeDict objectForKey:@"length"])
-        self.currentAppcastItem.updateLength = [[NSString alloc] initWithString:[attributeDict objectForKey:@"length"]];
+    if(attributeDict[@"length"])
+        self.currentAppcastItem.updateLength = [[NSString alloc] initWithString:attributeDict[@"length"]];
     
-    if([attributeDict objectForKey:@"type"])
-        self.currentAppcastItem.updateMimeType = [[NSString alloc] initWithString:[attributeDict objectForKey:@"type"]];
+    if(attributeDict[@"type"])
+        self.currentAppcastItem.updateMimeType = [[NSString alloc] initWithString:attributeDict[@"type"]];
     
-    if([attributeDict objectForKey:@"sparkle:dsaSignature"])
-        self.currentAppcastItem.updateSignature = [[NSString alloc] initWithString:[attributeDict objectForKey:@"sparkle:dsaSignature"]];
+    if(attributeDict[@"sparkle:dsaSignature"])
+        self.currentAppcastItem.updateSignature = [[NSString alloc] initWithString:attributeDict[@"sparkle:dsaSignature"]];
     
-    if([attributeDict objectForKey:@"sparkle:shortVersionString"])
-        self.currentAppcastItem.updateHumanReadableVersionNumber = [[NSString alloc] initWithString:[attributeDict objectForKey:@"sparkle:shortVersionString"]];
+    if(attributeDict[@"sparkle:shortVersionString"])
+        self.currentAppcastItem.updateHumanReadableVersionNumber = [[NSString alloc] initWithString:attributeDict[@"sparkle:shortVersionString"]];
 }
 
 @end

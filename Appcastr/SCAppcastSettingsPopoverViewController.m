@@ -10,8 +10,6 @@
 
 @implementation SCAppcastSettingsPopoverViewController
 
-@synthesize appcastTitleField, appcastLinkField, appcastDescriptionField, languagePopup, appcastFileController;
-
 - (void)awakeFromNib{
     NSArray *systemLanguages = [NSLocale ISOLanguageCodes];
     [self.languagePopup removeAllItems];

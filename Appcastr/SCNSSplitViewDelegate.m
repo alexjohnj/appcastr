@@ -25,7 +25,7 @@
 
 - (BOOL)splitView:(NSSplitView *)splitView shouldAdjustSizeOfSubview:(NSView *)subview{
     
-    if(subview == [[splitView subviews] objectAtIndex:0]){
+    if(subview == [splitView subviews][0]){
         return NO;
     }
     

@@ -46,17 +46,17 @@
     
     // create the root element's attributes
     
-    NSString *rssVersionKey = [[NSString alloc] initWithString:@"version"];
-    NSString *rssVersion = [[NSString alloc] initWithString:@"2.0"];
+    NSString *rssVersionKey = @"version";
+    NSString *rssVersion = @"2.0";
     
-    NSString *xmlnsSparkleKey = [[NSString alloc] initWithString:@"xmlns:sparkle"];
-    NSString *xmlnsSparkle = [[NSString alloc] initWithString:@"http://www.andymatuschak.org/xml-namespaces/sparkle"];
+    NSString *xmlnsSparkleKey = @"xmlns:sparkle";
+    NSString *xmlnsSparkle = @"http://www.andymatuschak.org/xml-namespaces/sparkle";
     
-    NSString *xmlnsDCKey = [[NSString alloc] initWithString:@"xmlns:dc"];
-    NSString *xmlnsDC = [[NSString alloc] initWithString:@"http://purl.org/dc/elements/1.1/"];
+    NSString *xmlnsDCKey = @"xmlns:dc";
+    NSString *xmlnsDC = @"http://purl.org/dc/elements/1.1/";
     
-    NSArray *attributeKeys = [NSArray arrayWithObjects:rssVersionKey, xmlnsSparkleKey, xmlnsDCKey, nil];
-    NSArray *attributeValues = [NSArray arrayWithObjects:rssVersion, xmlnsSparkle, xmlnsDC, nil];
+    NSArray *attributeKeys = @[rssVersionKey, xmlnsSparkleKey, xmlnsDCKey];
+    NSArray *attributeValues = @[rssVersion, xmlnsSparkle, xmlnsDC];
     NSDictionary *rootElementAttributes = [[NSDictionary alloc] initWithObjects:attributeValues forKeys:attributeKeys];
     
     // Add the attributes to the root element
@@ -135,28 +135,28 @@
     NSMutableArray *enclosureAttributesValues = [[NSMutableArray alloc] init];
     
     if(appcastItem.updateDownloadLink){
-        NSString *enclosureURLKey = [[NSString alloc] initWithString:@"url"];
+        NSString *enclosureURLKey = @"url";
         NSString *enclosureURL = [[NSString alloc] initWithString:appcastItem.updateDownloadLink];
         [enclosureAttributesKeys addObject:enclosureURLKey];
         [enclosureAttributesValues addObject:enclosureURL];
     }
     
     if(appcastItem.updateBuildNumber){
-        NSString *enclosureBuildVersionKey = [[NSString alloc] initWithString:@"sparkle:version"];
+        NSString *enclosureBuildVersionKey = @"sparkle:version";
         NSString *enclosureBuildVersion = [[NSString alloc] initWithString:appcastItem.updateBuildNumber];
         [enclosureAttributesKeys addObject:enclosureBuildVersionKey];
         [enclosureAttributesValues addObject:enclosureBuildVersion];
     }
     
     if(appcastItem.updateHumanReadableVersionNumber){
-        NSString *enclosureHumanReadableVersionKey = [[NSString alloc] initWithString:@"sparkle:shortVersionString"];
+        NSString *enclosureHumanReadableVersionKey = @"sparkle:shortVersionString";
         NSString *enclosureHumanReadableVersion = [[NSString alloc] initWithString:appcastItem.updateHumanReadableVersionNumber];
         [enclosureAttributesKeys addObject:enclosureHumanReadableVersionKey];
         [enclosureAttributesValues addObject:enclosureHumanReadableVersion];
     }
     
     if(appcastItem.updateLength){
-        NSString *enclosureLengthKey = [[NSString alloc] initWithString:@"length"];
+        NSString *enclosureLengthKey = @"length";
         NSString *enclosureLength = [[NSString alloc] initWithString:appcastItem.updateLength];
         [enclosureAttributesKeys addObject:enclosureLengthKey];
         [enclosureAttributesValues addObject:enclosureLength];
@@ -171,13 +171,13 @@
     //        [enclosureAttributesValues addObject:enclosureType];
     //    }
     
-    NSString *enclosureTypeKey = [[NSString alloc] initWithString:@"type"];
-    NSString *enclosureType = [[NSString alloc] initWithString:@"application/octet-stream"];
+    NSString *enclosureTypeKey = @"type";
+    NSString *enclosureType = @"application/octet-stream";
     [enclosureAttributesKeys addObject:enclosureTypeKey];
     [enclosureAttributesValues addObject:enclosureType];
     
     if(appcastItem.updateSignature){
-        NSString *enclosureDSASignatureKey = [[NSString alloc] initWithString:@"sparkle:dsaSignature"];
+        NSString *enclosureDSASignatureKey = @"sparkle:dsaSignature";
         NSString *enclosureDSASignature = [[NSString alloc] initWithString:appcastItem.updateSignature];
         [enclosureAttributesKeys addObject:enclosureDSASignatureKey];
         [enclosureAttributesValues addObject:enclosureDSASignature];

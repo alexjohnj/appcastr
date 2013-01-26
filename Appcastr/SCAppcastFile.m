@@ -11,9 +11,6 @@
 
 @implementation SCAppcastFile
 
-@synthesize appcastLink = _appcastLink, appcastTitle = _appcastTitle, appcastLanguage = _appcastLanguage, appcastDescription = _appcastDescription, items = _items;
-@synthesize currentDoc = _currentDoc;
-
 - (id)init{
     self = [super init];
     
@@ -31,15 +28,15 @@
 - (void)insertObject:(SCAppcastItem *)object inItemsAtIndex:(NSUInteger)index{
     NSUndoManager *undo = [[[NSDocumentController sharedDocumentController] currentDocument] undoManager];
     [[undo prepareWithInvocationTarget:self] removeObjectFromItemsAtIndex:index];
-    [_items insertObject:object atIndex:index];
+    [self.items insertObject:object atIndex:index];
     [[[NSDocumentController sharedDocumentController] currentDocument] startObservingUpdateInformation:object];
 }
 
 - (void)removeObjectFromItemsAtIndex:(NSUInteger)index{
-    SCAppcastItem *appcastItem = [self.items objectAtIndex:index];
+    SCAppcastItem *appcastItem = (self.items)[index];
     NSUndoManager *undo = [[[NSDocumentController sharedDocumentController] currentDocument] undoManager];
     [[undo prepareWithInvocationTarget:self] insertObject:appcastItem inItemsAtIndex:index];
-    [_items removeObjectAtIndex:index];
+    [self.items removeObjectAtIndex:index];
     [[[NSDocumentController sharedDocumentController] currentDocument] stopObservingUpdateInformation:appcastItem];
 }
 
