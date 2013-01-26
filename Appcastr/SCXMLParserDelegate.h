@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SCAppcastModel.h"
 #import "SCAppcastItem.h"
 #import "SCAppcastFile.h"
 

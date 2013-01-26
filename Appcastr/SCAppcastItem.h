@@ -10,18 +10,21 @@
 
 @interface SCAppcastItem : NSObject
 
-@property (strong) NSString *updateBuildNumber;
-@property (strong) NSString *updateHumanReadableVersionNumber;
-@property (strong) NSString *updateSignature;
-@property (strong) NSString *updateDownloadLink;
-@property (strong) NSString *updateReleaseNotesLink;
-@property (strong) NSString *updateTitle;
-@property (strong) NSString *updateLength;
-@property (strong) NSString *updateMimeType;
-@property (strong) NSDate *updatePublicationDate;
-@property (strong) NSString *updateMinimumSystemVersion;
-@property (strong) NSString *updateMaximumSystemVersion;
+@property (strong) NSMutableString *updateReleaseNotesLink;
+@property (strong) NSMutableString *updateTitle;
+@property (strong) NSMutableString *updateMinimumSystemVersion;
+@property (strong) NSMutableString *updateMaximumSystemVersion;
 @property (assign) BOOL updateSpecifiesMinimumSystemVersion;
 @property (assign) BOOL updateSpecifiesMaximumSystemVersion;
+@property (strong) NSDate *updatePublicationDate;
+
+// Declared in <enclosure> attributes
+
+@property (strong) NSString *updateBuildNumber;
+@property (strong) NSString *updateHumanReadableVersionNumber;
+@property (strong) NSString *updateLength;
+@property (strong) NSString *updateDownloadLink;
+@property (strong) NSString *updateMimeType;
+@property (strong) NSString *updateSignature;
 
 @end

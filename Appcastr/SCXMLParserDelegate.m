@@ -54,34 +54,34 @@
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string{    
     if([self.currentElement isEqualToString:@"title"] && !self.isItemElement) // check we aren't in an <item> element as <title> can occur both insde and outside an <item> element
-        self.appcastFileRepresentation.appcastTitle = [[NSString alloc] initWithString:string];
+        [self.appcastFileRepresentation.appcastTitle appendString:string];
     
     if([self.currentElement isEqualToString:@"link"])
-        self.appcastFileRepresentation.appcastLink = [[NSString alloc] initWithString:string];
+        [self.appcastFileRepresentation.appcastLink appendString:string];
     
     if([self.currentElement isEqualToString:@"description"] && !self.isItemElement) // again, as above. 
-        self.appcastFileRepresentation.appcastDescription = [[NSString alloc] initWithString:string];
+        [self.appcastFileRepresentation.appcastDescription appendString:string];
     
     if([self.currentElement isEqualToString:@"language"])
-        self.appcastFileRepresentation.appcastLanguage = [[NSString alloc] initWithString:string];
+        [self.appcastFileRepresentation.appcastLanguage appendString:string];
     
     if([self.currentElement isEqualToString:@"sparkle:releaseNotesLink"])
-        self.currentAppcastItem.updateReleaseNotesLink = [[NSString alloc] initWithString:string];  
+        [self.currentAppcastItem.updateReleaseNotesLink appendString:string];
     
     if([self.currentElement isEqualToString:@"title"] && self.isItemElement) 
-        self.currentAppcastItem.updateTitle = [[NSString alloc] initWithString:string];
+        [self.currentAppcastItem.updateTitle appendString:string];
     
     if([self.currentElement isEqualToString:@"pubDate"] && self.isItemElement)
         self.currentAppcastItem.updatePublicationDate = [NSDate dateWithNaturalLanguageString:string];
     
     if([self.currentElement isEqualToString:@"sparkle:minimumSystemVersion"] && self.isItemElement){
         self.currentAppcastItem.updateSpecifiesMinimumSystemVersion = YES;
-        self.currentAppcastItem.updateMinimumSystemVersion = [[NSString alloc] initWithString:string];
+        [self.currentAppcastItem.updateMinimumSystemVersion appendString:string];
     }
     
     if([self.currentElement isEqualToString:@"sparkle:maximumSystemVersion"] && self.isItemElement){
         self.currentAppcastItem.updateSpecifiesMaximumSystemVersion = YES;
-        self.currentAppcastItem.updateMaximumSystemVersion = [[NSString alloc] initWithString:string];
+        [self.currentAppcastItem.updateMaximumSystemVersion appendString:string];
     }
 }
 
@@ -89,22 +89,22 @@
 
 - (void)extractUpdateInformationFromEnclosureAttributes:(NSDictionary *)attributeDict{
     if(attributeDict[@"url"])
-        self.currentAppcastItem.updateDownloadLink = [[NSString alloc] initWithString:attributeDict[@"url"]];
+        self.currentAppcastItem.updateDownloadLink = attributeDict[@"url"];
     
     if(attributeDict[@"sparkle:version"])
-        self.currentAppcastItem.updateBuildNumber = [[NSString alloc] initWithString:attributeDict[@"sparkle:version"]];
+        self.currentAppcastItem.updateBuildNumber = attributeDict[@"sparkle:version"];
     
     if(attributeDict[@"length"])
-        self.currentAppcastItem.updateLength = [[NSString alloc] initWithString:attributeDict[@"length"]];
+        self.currentAppcastItem.updateLength = attributeDict[@"length"];
     
     if(attributeDict[@"type"])
-        self.currentAppcastItem.updateMimeType = [[NSString alloc] initWithString:attributeDict[@"type"]];
+        self.currentAppcastItem.updateMimeType = attributeDict[@"type"];
     
     if(attributeDict[@"sparkle:dsaSignature"])
-        self.currentAppcastItem.updateSignature = [[NSString alloc] initWithString:attributeDict[@"sparkle:dsaSignature"]];
+        self.currentAppcastItem.updateSignature = attributeDict[@"sparkle:dsaSignature"];
     
     if(attributeDict[@"sparkle:shortVersionString"])
-        self.currentAppcastItem.updateHumanReadableVersionNumber = [[NSString alloc] initWithString:attributeDict[@"sparkle:shortVersionString"]];
+        self.currentAppcastItem.updateHumanReadableVersionNumber = attributeDict[@"sparkle:shortVersionString"];
 }
 
 @end

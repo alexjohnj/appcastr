@@ -14,17 +14,20 @@
     self = [super init];
     
     if(self){
+        _updateTitle = [[NSMutableString alloc] init];
+        _updateMinimumSystemVersion = [[NSMutableString alloc] init];
+        _updateMaximumSystemVersion = [[NSMutableString alloc] init];
+        _updateReleaseNotesLink = [[NSMutableString alloc] init];
+        
         _updateBuildNumber = [[NSString alloc] init];
-        _updateTitle = [[NSString alloc] init];
         _updateSignature = [[NSString alloc] init];
         _updateDownloadLink = [[NSString alloc] init];
-        _updateReleaseNotesLink = [[NSString alloc] init];
         _updateLength = [[NSString alloc] init];
         _updateMimeType = [[NSString alloc] init];
-        _updatePublicationDate = [[NSDate alloc] init];
         _updateHumanReadableVersionNumber = [[NSString alloc] init];
-        _updateMinimumSystemVersion = [[NSString alloc] init];
-        _updateMaximumSystemVersion = [[NSString alloc] init];
+        
+        _updatePublicationDate = [[NSDate alloc] init];
+        
         _updateSpecifiesMaximumSystemVersion = NO;
         _updateSpecifiesMinimumSystemVersion = NO;
     }

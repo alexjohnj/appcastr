@@ -16,10 +16,10 @@
 @property (weak) SCDocument *currentDoc;
 
 @property (copy) NSMutableArray *items; 
-@property (strong) NSString *appcastDescription;
-@property (strong) NSString *appcastTitle;
-@property (strong) NSString *appcastLink;
-@property (strong) NSString *appcastLanguage;
+@property (strong) NSMutableString *appcastDescription;
+@property (strong) NSMutableString *appcastTitle;
+@property (strong) NSMutableString *appcastLink;
+@property (strong) NSMutableString *appcastLanguage;
 
 - (void)insertObject:(SCAppcastItem *)object inItemsAtIndex:(NSUInteger)index;
 - (void)removeObjectFromItemsAtIndex:(NSUInteger)index;

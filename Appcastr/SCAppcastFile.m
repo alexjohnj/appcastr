@@ -15,10 +15,10 @@
     self = [super init];
     
     if(self){
-        _appcastTitle = [[NSString alloc] init];
-        _appcastLink = [[NSString alloc] init];
-        _appcastLanguage = [[NSString alloc] init];
-        _appcastDescription = [[NSString alloc] init];
+        _appcastTitle = [[NSMutableString alloc] init];
+        _appcastLink = [[NSMutableString alloc] init];
+        _appcastLanguage = [[NSMutableString alloc] init];
+        _appcastDescription = [[NSMutableString alloc] init];
         
         _items = [[NSMutableArray alloc] init];
     }
